@@ -42,8 +42,17 @@ while executing `Agent` on targeted system with all required parameters . user i
 
 1. make sure to have at least `php 5.6 or above` 
 2. requires  `mysql 5.6` 
-3. make sure to add application on root with folder name  `0xsp` as  [ http://localhost/0xsp/]  , `Agent` will not connect to it in case not configured correctly . the `agent` will connect only as following case : 
+3. make sure to add Web application on root path `/` with folder name  `0xsp` as  [ http://localhost/0xsp/]  , `Agent` will not connect to it in case not configured correctly . the `agent` will connect only as following case : 
 ```
 ./agent {SCAN OPTION} -o localhost -x secretkey
+```
+
+
+### Examples 
+
+```
+./agent -c -o localhost -x 0xsp { enumerate for CRON Tasks and Transfer results into Web Api} 
+./agent -e -o localhost -x 0xsp { intelligent Exploits Detector }
+./agent -c -e localhost -x 0sxp { will run two scans together and send found results directly }
 ```
 
