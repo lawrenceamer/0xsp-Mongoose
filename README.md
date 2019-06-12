@@ -1,7 +1,5 @@
 
 
-[github-license-image]: https://img.shields.io/github/license/commonality/getting-started-inner-source.svg?style=flat-square
-
 # 0xsp Mongoose Linux Privilege Escalation intelligent Enumeration Toolkit
 
 using 0xsp mongoose you will be able to scan targeted operating system for any possible way for privilege escalation attacks,starting from 
