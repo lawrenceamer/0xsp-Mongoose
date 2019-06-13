@@ -53,11 +53,18 @@ while executing `Agent` on targeted system with all required parameters . user i
 ```
 
 
-### Examples 
+### Examples With WebApi  
 
 ```
 ./agent -c -o localhost -x 0xsp { enumerate for CRON Tasks and Transfer results into Web Api} 
 ./agent -e -o localhost -x 0xsp { intelligent Exploits Detector }
 ./agent -c -e localhost -x 0sxp { will run two scans together and send found results directly }
 ```
+
+### Examples Without WebApi
+
+```
+./agent -c -k -p { this will run 3 scans at the same time with out sending results into Web Api }
+```
+
 
