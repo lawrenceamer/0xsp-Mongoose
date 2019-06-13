@@ -2,7 +2,7 @@
 [<img src="https://img.shields.io/badge/slack-@0xsp/npp-yellow.svg?logo=slack">](https://0xsp.slack.com/messages/CK3J9QWF2/)
 [<img src="https://img.shields.io/badge/build%20with-Lazarus-red.svg">](https://www.lazarus-ide.org/)
 [<img src="https://img.shields.io/badge/sponsored%20by-Secploit-green.svg">](https://secploit.com/)
-
+[<img align="right" src="https://secploit.com/static/0xsp/trans.png" height="512" width="400">]()
 # 0xsp Mongoose Linux Privilege Escalation intelligent Enumeration Toolkit
 
 using 0xsp mongoose you will be able to scan targeted operating system for any possible way for privilege escalation attacks,starting from 
@@ -44,6 +44,8 @@ while executing `Agent` on targeted system with all required parameters . user i
 ```
 
 ### Server Web App 
+
+[<img src="https://secploit.com/static/0xsp/web.png">]()
 
 1. make sure to have at least `php 5.6 or above` 
 2. requires  `mysql 5.6` 
