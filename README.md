@@ -69,4 +69,11 @@ while executing `Agent` on targeted system with all required parameters . user i
 ./agent -c -k -p { this will run 3 scans at the same time with out sending results into Web Api }
 ```
 
+### Agent Features 
 
+1. High performance , stability , Output results Generated while executing no dealys 
+2. Ability to execute most of functions with intelligent techniques . 
+3. results are being sent to Quick Web API
+4. Exception Handling . 
+5. inbuilt Json Dataset for publicly disclosed Exploits . 
+6. Fast As Mongoose 
