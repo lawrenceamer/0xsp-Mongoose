@@ -25,18 +25,18 @@ while executing `Agent` on targeted system with all required parameters . user i
 2. ./agent -h (display help instructions) 
 
 ```
--k --check kernel for common used privilige escalations exploits 
--u --Getting information about Users , groups , releated information 
--c --check cronjobs 
--n --Retrieve Network information,interfaces ...etc
+-k --check kernel for common used privilige escalations exploits. 
+-u --Getting information about Users , groups , releated information.
+-c --check cronjobs. 
+-n --Retrieve Network information,interfaces ...etc.
 -w --Enumerate for Writeable Files , Dirs , SUID , 
--i --Search for Bash,python,Mysql,Vim..etc History files
--f --search for Senstive config files accessible & private stuff 
--o --connect to 0xsp Web Application 
--p --Show All process By running under Root 
--e --Kernel inspection Tool, it will help to search through tool databases for kernel vulnerabilities 
--x --secret Key to authorize your connection with WebApp API (default is 0xsp) 
--a --Display README 
+-i --Search for Bash,python,Mysql,Vim..etc History files.
+-f --search for Senstive config files accessible & private stuff. 
+-o --connect to 0xsp Web Application. 
+-p --Show All process By running under Root,Check For Vulnerable Packages. 
+-e --Kernel inspection Tool, it will help to search through tool databases for kernel vulnerabilities. 
+-x --secret Key to authorize your connection with WebApp API (default is 0xsp). 
+-a --Display README. 
 
 
 
