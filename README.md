@@ -12,7 +12,7 @@ user will be able to scan different linux os system at same time with high perfr
 
 project is divided into two sections `server` & `agent` . 
 
-`server` has been coded with PHP(`codignitor`) you need to install this application into your prefered environment , you can use it online or on your localhost . user is free to choice .also contribution to enhace features are most welcomed .
+`server` has been coded with PHP(`codeigniter`) you need to install this application into your prefered environment , you can use it online or on your localhost . user is free to choice .also contribution to enhace features are most welcomed .
 
 `Agent` has been coded as ELF with `Lazarus Free Pascal` will be released with ( 32 , 64 bit) , the source code of it still not released , but will be in upcoming releasing .
 while executing `Agent` on targeted system with all required parameters . user is free to decided wether willing to communicate with `Server App` to store results and explore them easily . or he can also run this tool with out Web Api Connection . 
