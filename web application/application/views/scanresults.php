@@ -47,7 +47,8 @@
   </div>
   <!-- End of Page Wrapper -->
  <script type="text/javascript">
-    var key = "<?=$this->uri->segment(3); ?>"
+    var key = "<?=$this->uri->segment(3); ?>";
+    var host = "<?=base_url('dashboard/getResult/');?>";
     
 </script>
  
