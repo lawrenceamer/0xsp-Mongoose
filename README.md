@@ -43,7 +43,7 @@ while executing `Agent` on targeted system with all required parameters . user i
 
 ```
 
-### Server Web App 
+### Server Web App (must be like this  : http://host/0xsp/ )
 
 [<img src="https://secploit.com/static/0xsp/web.png">]()
 
