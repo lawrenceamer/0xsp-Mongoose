@@ -8,14 +8,14 @@
 using 0xsp mongoose you will be able to scan targeted operating system for any possible way for privilege escalation attacks,starting from 
 collecting information stage unitl reporting information through 0xsp Web Application API . 
 
-user will be able to scan different linux os system at same time with high perfromance , with out spending time looking inside the terminal or text file for what is found , mongoos shorten this way by allowing you to send these information directly into web application friendly interface through easy api endpoint . 
+user will be able to scan different linux os system at same time with high perfromance , with out spending time looking inside the terminal or text file for what is found , mongoose shorten this way by allowing you to send these information directly into web application friendly interface through easy API endpoint . 
 
 project is divided into two sections `server` & `agent` . 
 
-`server` has been coded with PHP(`codeigniter`) you need to install this application into your prefered environment , you can use it online or on your localhost . user is free to choice .also contribution to enhace features are most welcomed .
+`server` has been coded with PHP(`codeigniter`) you need to install this application into your preffered environment , you can use it online or on your localhost . user is free to choice .also contribution to enhance features are most welcomed .
 
 `Agent` has been coded as ELF with `Lazarus Free Pascal` will be released with ( 32 , 64 bit) , the source code of it still not released , but will be in upcoming releasing .
-while executing `Agent` on targeted system with all required parameters . user is free to decided wether willing to communicate with `Server App` to store results and explore them easily . or he can also run this tool with out Web Api Connection . 
+while executing `Agent` on targeted system with all required parameters . user is free to decided whether  willing to communicate with `Server App` to store results and explore them easily . or he can also run this tool with out Web Api Connection . 
 
 
 
@@ -71,11 +71,11 @@ while executing `Agent` on targeted system with all required parameters . user i
 
 ### Agent Features 
 
-1. High performance , stability , Output results Generated while executing no dealys 
+1. High performance , stability , Output results Generated while executing no delays 
 2. Ability to execute most of functions with intelligent techniques . 
 3. results are being sent to Quick Web API
 4. Exception Handling . 
-5. inbuilt Json Dataset for publicly disclosed Exploits . 
+5. inbuilt Json Data set for publicly disclosed Exploits . 
 6. Fast As Mongoose 
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/lG3HS7a9sVc/0.jpg)](https://www.youtube.com/watch?v=lG3HS7a9sVc)
