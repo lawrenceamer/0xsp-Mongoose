@@ -44,11 +44,11 @@ class Dashboard extends CI_Controller{
         echo $this->datatables->generate();    
     }
 
-    public function scanreshost($host=null,$category=null)
-    {
-        $singleresult = $this->api_model->getSingleHostResult($category);
-        echo json_encode($singleresult);
-    }
+//     public function scanreshost($host=null,$category=null)
+//     {
+//         $singleresult = $this->api_model->getSingleHostResult($category);
+//         echo json_encode($singleresult);
+//     }
 
     public function scanresult($host = null,$category = null)
     {
