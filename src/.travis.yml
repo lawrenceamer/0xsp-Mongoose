@@ -1,3 +1,5 @@
 sudo: required
 dist: trusty
 install: ./travis-lazarus/.travis.install.py
+os: linux
+  
