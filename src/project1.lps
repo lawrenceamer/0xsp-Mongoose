@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="10"/>
+    <BuildModes Active="Default"/>
+    <Units Count="8">
+      <Unit0>
+        <Filename Value="project1.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <TopLine Value="230"/>
+        <CursorPos X="34" Y="254"/>
+        <UsageCount Value="206"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="core.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="3"/>
+        <CursorPos X="15" Y="78"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="/usr/lib64/fpc/3.0.4/source/packages/fcl-web/src/base/fphttpclient.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="268"/>
+        <CursorPos X="96" Y="297"/>
+        <UsageCount Value="100"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="/usr/lib64/fpc/3.0.4/source/rtl/objpas/sysutils/datih.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="115"/>
+        <CursorPos X="10" Y="126"/>
+        <UsageCount Value="58"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="/usr/lib64/fpc/3.0.4/source/packages/fcl-process/src/process.pp"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="14" Y="18"/>
+        <UsageCount Value="20"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="/usr/lib64/fpc/3.0.4/source/packages/fcl-base/src/base64.pp"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="5" Y="9"/>
+        <UsageCount Value="11"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="datain.pas"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="134"/>
+        <CursorPos X="10" Y="148"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="/usr/lib64/fpc/3.0.4/source/packages/fcl-json/src/fpjson.pp"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="61"/>
+        <CursorPos X="3" Y="76"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit7>
+    </Units>
+    <JumpHistory Count="30" HistoryIndex="29">
+      <Position1>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="61" Column="6" TopLine="40"/>
+      </Position1>
+      <Position2>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="58" Column="5" TopLine="40"/>
+      </Position2>
+      <Position3>
+        <Filename Value="core.pas"/>
+        <Caret Line="12"/>
+      </Position3>
+      <Position4>
+        <Filename Value="core.pas"/>
+        <Caret Line="15" Column="22"/>
+      </Position4>
+      <Position5>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="58" Column="19" TopLine="51"/>
+      </Position5>
+      <Position6>
+        <Filename Value="core.pas"/>
+        <Caret Line="37" Column="45" TopLine="32"/>
+      </Position6>
+      <Position7>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="59" Column="5" TopLine="40"/>
+      </Position7>
+      <Position8>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="58" Column="5"/>
+      </Position8>
+      <Position9>
+        <Filename Value="core.pas"/>
+        <Caret Line="10" Column="29"/>
+      </Position9>
+      <Position10>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="51" Column="49" TopLine="40"/>
+      </Position10>
+      <Position11>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="59" Column="17" TopLine="40"/>
+      </Position11>
+      <Position12>
+        <Filename Value="core.pas"/>
+        <Caret Line="12"/>
+      </Position12>
+      <Position13>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="65" Column="38" TopLine="38"/>
+      </Position13>
+      <Position14>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="28" Column="38" TopLine="13"/>
+      </Position14>
+      <Position15>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="206" Column="13" TopLine="188"/>
+      </Position15>
+      <Position16>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="891" Column="23" TopLine="8"/>
+      </Position16>
+      <Position17>
+        <Filename Value="datain.pas"/>
+        <Caret Line="8" Column="21"/>
+      </Position17>
+      <Position18>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="17" Column="21" TopLine="8"/>
+      </Position18>
+      <Position19>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="42" Column="35" TopLine="17"/>
+      </Position19>
+      <Position20>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="52" Column="41" TopLine="27"/>
+      </Position20>
+      <Position21>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="103" Column="20" TopLine="78"/>
+      </Position21>
+      <Position22>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="140" Column="22" TopLine="116"/>
+      </Position22>
+      <Position23>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="191" Column="34" TopLine="165"/>
+      </Position23>
+      <Position24>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="530" Column="30" TopLine="503"/>
+      </Position24>
+      <Position25>
+        <Filename Value="datain.pas"/>
+        <Caret Line="13" Column="4"/>
+      </Position25>
+      <Position26>
+        <Filename Value="datain.pas"/>
+        <Caret Line="8" Column="52"/>
+      </Position26>
+      <Position27>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="530" Column="14" TopLine="503"/>
+      </Position27>
+      <Position28>
+        <Filename Value="datain.pas"/>
+        <Caret Line="30" Column="29" TopLine="4"/>
+      </Position28>
+      <Position29>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="259" Column="19" TopLine="233"/>
+      </Position29>
+      <Position30>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="254" Column="34" TopLine="230"/>
+      </Position30>
+    </JumpHistory>
+  </ProjectSession>
+</CONFIG>
