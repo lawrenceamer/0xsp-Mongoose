@@ -14,7 +14,7 @@ project is divided into two sections `server` & `agent` .
 
 `server` has been coded with PHP(`codeigniter`) you need to install this application into your preffered environment , you can use it online or on your localhost . user is free to choice .also contribution to enhance features are most welcomed .
 
-`Agent` has been coded as ELF with `Lazarus Free Pascal` will be released with ( 32 , 64 bit) , <b>the source code of it still not published , but will be Available on upcoming releasing </b>.
+`Agent` has been coded as ELF with `Lazarus Free Pascal` will be released with ( 32 , 64 bit) ,
 while executing `Agent` on targeted system with all required parameters . user is free to decided whether  willing to communicate with `Server App` to store results and explore them easily . or he can also run this tool with out Web Api Connection . 
 
 
