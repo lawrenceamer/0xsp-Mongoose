@@ -61,7 +61,7 @@ while executing `Agent` on targeted system with all required parameters . user i
 ./agent -c -o localhost -x 0xsp { enumerate for CRON Tasks and Transfer results into Web Api} 
 ./agent -e -o localhost -x 0xsp { intelligent Exploits Detector }
 ./agent -c -e localhost -x 0sxp { will run two scans together and send found results directly }
-./agent -m -e 10.10.13.1 -x 0xsp { RUN all Scans together and export it to Web API} 
+./agent -m -o 10.10.13.1 -x 0xsp { RUN all Scans together and export it to Web API} 
 ```
 
 ### Examples Without WebApi
