@@ -37,10 +37,26 @@ class Api_model extends CI_Model{
         $this->db->insert('outputs',$data);
     }
 
-    function getCategories()
+    function getHostOsName($host)
     {
+        $this->db->where('random_val',$host);
+        $q = $this->db->get('outputs');
+        foreach($q->result() as $cat){
+            return $cat->sys;
+        }
+    }
+    function getWindowsCategories()
+    {
+        $this->db->where('os','windows');
         return $this->db->get('categories')->result();
     }
+    
+    function getLinuxCategories()
+    {
+        $this->db->where('os','Linux');
+        return $this->db->get('categories')->result();
+    }        
+    
     function getCatResult($key,$id)
     {  
         $this->db->select('*');
