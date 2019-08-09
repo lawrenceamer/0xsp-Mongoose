@@ -44,7 +44,11 @@ while executing `Agent` on targeted system with all required parameters . user i
 
 ### Server Web App (must be like this  : http://host/0xsp/ )
 
-[<img src="https://secploit.com/static/0xsp/web.png">]()
+[<img src="https://github.com/lawrenceamer/0xsp-Mongoose/blob/master/Windows%20Agent%20Source%20Code/Screenshot_2019-08-09%20Dashboard.png?raw=true">]()
+
+[<img src="https://github.com/lawrenceamer/0xsp-Mongoose/blob/master/Windows%20Agent%20Source%20Code/Screenshot_2019-08-09%20Scan%20Results.png?raw=true">]()
+
+[<img src="https://github.com/lawrenceamer/0xsp-Mongoose/blob/master/Windows%20Agent%20Source%20Code/Screenshot_2019-08-09%20Scan%20Results(1).png?raw=true">]()
 
 1. make sure to have at least `php 5.6 or above` 
 2. requires  `mysql 5.6` 
