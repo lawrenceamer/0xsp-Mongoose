@@ -2,8 +2,8 @@
 [<img src="https://img.shields.io/badge/slack-@0xsp/npp-yellow.svg?logo=slack">](https://0xsp.slack.com/messages/CK3J9QWF2/)
 [<img src="https://img.shields.io/badge/build%20with-Lazarus-red.svg">](https://www.lazarus-ide.org/)
 [<img src="https://img.shields.io/badge/sponsored%20by-Secploit-green.svg">](https://secploit.com/)
-[<img align="right" src="https://secploit.com/static/0xsp/trans.png" height="512" width="400">]()
-# 0xsp Mongoose Linux Privilege Escalation intelligent Enumeration Toolkit
+[<img align="right" src="https://github.com/lawrenceamer/0xsp-Mongoose/blob/master/Windows%20Agent%20Source%20Code/mongoose%20windows.png" height="512" width="400">]()
+# 0xsp Mongoose Linux / Windows Privilege Escalation intelligent Enumeration Toolkit
 
 using 0xsp mongoose you will be able to scan targeted operating system for any possible way for privilege escalation attacks,starting from 
 collecting information stage unitl reporting information through 0xsp Web Application API . 
