@@ -28,12 +28,13 @@ class Dashboard extends CI_Controller{
         $data['title'] = "Dashboard";
         $data['resultsnum'] = $this->api_model->getAllResults();
         $data['hostsnum'] = $this->api_model->getAllHosts();
-            $dd = $this->api_model->getHostOsName($host=null);
+        $dd = $this->api_model->getHostOsName($host=null);
             if(strpos($dd,'windows') == true || strpos($dd,'Windows') == true){
                 $data['categories'] = $this->api_model->getWindowsCategories();
             }else{
                 $data['categories'] = $this->api_model->getLinuxCategories();
-            }        $data['content'] = "dashboard";
+            }        
+        $data['content'] = "dashboard";
         $this->load->view('layout',$data);
     }
 
