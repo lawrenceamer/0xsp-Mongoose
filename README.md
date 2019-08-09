@@ -8,7 +8,7 @@
 using 0xsp mongoose you will be able to scan targeted operating system for any possible way for privilege escalation attacks,starting from 
 collecting information stage unitl reporting information through 0xsp Web Application API . 
 
-user will be able to scan different linux os system at same time with high perfromance , with out spending time looking inside the terminal or text file for what is found , mongoose shorten this way by allowing you to send these information directly into web application friendly interface through easy API endpoint . 
+user will be able to scan different linux / windows Operation systems at same time with high perfromance , with out spending time looking inside the terminal or text file for what is found , mongoose shorten this way by allowing you to send these information directly into web application friendly interface through easy API endpoint . 
 
 project is divided into two sections `server` & `agent` . 
 
