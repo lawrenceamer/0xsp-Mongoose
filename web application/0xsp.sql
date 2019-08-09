@@ -31,22 +31,31 @@ SET time_zone = "+00:00";
 CREATE TABLE `categories` (
   `cat_id` int(11) NOT NULL,
   `cat_name` varchar(255) NOT NULL,
-  `cat_icon` varchar(255) NOT NULL
+  `cat_icon` varchar(255) NOT NULL,
+  `os` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`cat_id`, `cat_name`, `cat_icon`) VALUES
-(1, 'Kernel information', 'kernel.svg'),
-(2, 'Cron jobs collected', 'cron.svg'),
-(3, 'Exploit inspections', 'exploit.svg'),
-(4, 'Vulnerable Packages', 'software.svg'),
-(5, 'User information', 'user.svg'),
-(6, 'Information disclosure', 'info.svg'),
-(7, 'Network enumeration', 'network.svg'),
-(8, 'SUID & Access issue', 'suid.svg');
+INSERT INTO `categories` (`cat_id`, `cat_name`, `cat_icon`, `os`) VALUES
+(1, 'Kernel information', 'kernel.svg', 'Linux'),
+(2, 'Cron jobs collected', 'cron.svg', 'Linux'),
+(3, 'Exploit inspections', 'exploit.svg', 'Linux'),
+(4, 'Vulnerable Packages', 'software.svg', 'Linux'),
+(5, 'User information', 'user.svg', 'Linux'),
+(6, 'Information disclosure', 'info.svg', 'Linux'),
+(7, 'Network enumeration', 'network.svg', 'Linux'),
+(8, 'SUID & Access issue', 'suid.svg', 'Linux'),
+(9, 'System Information', 'sys.svg', 'windows'),
+(10, 'Active Services', 'act.svg', 'windows'),
+(11, 'Software & Process ', 'ps.svg', 'windows'),
+(12, 'Windows Exploits', 'exploits.svg', 'windows'),
+(13, 'User Information ', 'usr.svg', 'windows'),
+(14, 'Network Enumeration ', 'net.svg', 'windows'),
+(15, 'Access Check Permission', 'ACP.svg', 'windows'),
+(16, 'Potential Files / Folders ', 'pfp.svg', 'windows');
 
 -- --------------------------------------------------------
 
