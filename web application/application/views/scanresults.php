@@ -24,11 +24,7 @@
               </div>
               </div>
           <?php endforeach ; ?>
-
               </div>
-
-
-
          </div>
         <!-- /.container-fluid -->
       </div>
@@ -46,9 +42,9 @@
     <!-- End of Content Wrapper -->
   </div>
   <!-- End of Page Wrapper -->
- <script type="text/javascript">
-    var key = "<?=$this->uri->segment(3); ?>";
-    var host = "<?=base_url('dashboard/getResult/');?>";
-    
-</script>
+  <script type="text/javascript">
+            var key = "<?=$this->uri->segment(3); ?>";
+            var host = "<?=base_url('dashboard/getResult/');?>";
+            let categories = 17;
+   </script>
  
