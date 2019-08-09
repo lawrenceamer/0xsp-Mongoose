@@ -13,7 +13,7 @@
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?=base_url('dashboard');?>">
         <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-bug"></i>
+          <i class="fas fa-fingerprint"></i>
         </div>
         <div class="sidebar-brand-text mx-3">0xsp</div>
       </a>
@@ -39,7 +39,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">My Scans:</h6>
             <?php foreach($categories as $category): ?>
-                <a class="collapse-item" href="<?=base_url('dashboard/scanresult/');?><?=$this->uri->segment(3).'/'.$category->cat_id;?>"><?=$category->cat_name?></a>
+                <a class="collapse-item cate<?=$category->cat_id;?>" href="<?=base_url('dashboard/scanresult/');?><?=$this->uri->segment(3).'/'.$category->cat_id;?>"><?=$category->cat_name?></a>
             <?php endforeach ; ?>
           </div>
         </div>
@@ -65,35 +65,13 @@
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
           </button>
-
-          <!-- Topbar Search
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-            <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                  <i class="fas fa-search fa-sm"></i>
-                </button>
-              </div>
-            </div>
-          </form>
-            -->
-          <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
-
-
-
-            <!-- <div class="topbar-divider d-none d-sm-block"></div> -->
-
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$this->session->userdata('user_name');?></span>
-                <img class="img-profile rounded-circle" src="https://cdn2.iconfinder.com/data/icons/hacker-solid/100/hacker_hacker_human_-512.png">
+                <img class="rounded-circle" width="25" src="<?=base_url('storage/images/trans.png');?>">
               </a>
-
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-
-
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#resetPassModal">
                   <i class="fas fa-lock-open fa-sm fa-fw mr-2 text-gray-400"></i>
                   Change Password
@@ -106,11 +84,8 @@
               </div>
             </li>
           </ul>
-
         </nav>
-        <!-- End of Topbar -->
 
-  <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
