@@ -57,8 +57,8 @@ while executing `Agent` on targeted system with all required parameters . user i
 ### Examples With WebApi  
 
 ```
-./agent -c -o localhost -x 0xsp { enumerate for CRON Tasks and Transfer results into Web Api} 
-./agent -e -o localhost -x 0xsp { intelligent Exploits Detector }
+./agent -c -o localhost -x 0xsp { enumerate for Senstive Configs files & Private Stuff} 
+./agent -e -o localhost -x 0xsp { intelligent Exploits Detector Must Match Windows Arch 64 or 32 }
 ./agent -c -e localhost -x 0sxp { will run two scans together and send found results directly }
 ./agent -m -o 10.10.13.1 -x 0xsp { RUN all Scans together and export it to Web API} 
 ```
@@ -66,7 +66,7 @@ while executing `Agent` on targeted system with all required parameters . user i
 ### Examples Without WebApi
 
 ```
-./agent -c -k -p { this will run 3 scans at the same time with out sending results into Web Api }
+./agent -c -e -p { this will run 3 scans at the same time with out sending results into Web Api }
 ```
 
 ### Agent Features 
@@ -76,7 +76,7 @@ while executing `Agent` on targeted system with all required parameters . user i
 3. results are being sent to Quick Web API
 4. Exception Handling . 
 5. inbuilt Json Data set for publicly disclosed Exploits . 
-6. Fast As Mongoose 
+6. Fast As Mongoose , you will be amazed with how fast it is While executing . 
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/lG3HS7a9sVc/0.jpg)](https://www.youtube.com/watch?v=lG3HS7a9sVc)
 
