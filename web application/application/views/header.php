@@ -11,9 +11,10 @@
   <meta name="author" content="">
   <title><?=$title?></title>
   <link href="<?=base_url('storage/');?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="<?=base_url('storage/');?>vendor/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
   <link href="<?=base_url('storage/');?>css/custom.css" rel="stylesheet">
-  <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
-  <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" rel="stylesheet">
+  <link href="<?=base_url('storage/');?>css/jquery.dataTables.min.css" rel="stylesheet">
+  <link href="<?=base_url('storage/');?>css/dataTables.bootstrap.min.css" rel="stylesheet">
   <link href="<?=base_url('storage/');?>css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
