@@ -60,11 +60,18 @@
         </div>
         <div class="row">
         <div class="col-xl-12 col-md-12 mb-4">
-        <h1 class="h3 mb-4 text-gray-800">Hosts</h1>
-            <table class="table table-bordered bg-white table-responsive text-nowrap" id="datatable">
-                
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-windows-tab" data-toggle="tab" href="#nav-windows" role="tab" aria-controls="nav-windows" aria-selected="true">Windows <i class="fa fa-windows" aria-hidden="true"></i></a>
+            <a class="nav-item nav-link " id="nav-linux-tab" data-toggle="tab" href="#nav-linux" role="tab" aria-controls="nav-linux" aria-selected="false">Linux <i class="fa fa-linux" aria-hidden="true"></i></a>
+          </div>
+        </nav>
+        <h1 class="h3 mb-4 text-gray-800 pt-3">Hosts</h1>
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-windows" role="tabpanel" aria-labelledby="nav-windows-tab">
+            <table class=" " id="datatable">
               <thead>
-                <tr class="table-warning" >
+                <tr class="" >
                   <th>Report Key <i class="fa fa-calender"></i></th>
                   <th >Host <i class="fa fa-laptop"></i></th>
                   <th >OS <i class="fa fa-server"></i></th>
@@ -75,7 +82,23 @@
 
               </tbody>
             </table>
+          </div>
+          <div class="tab-pane fade active" id="nav-linux" role="tabpanel" aria-labelledby="nav-linux-tab">
+            <table class=" " id="datatable2">
+              <thead>
+                <tr class="" >
+                  <th>Report Key <i class="fa fa-calender"></i></th>
+                  <th >Host <i class="fa fa-laptop"></i></th>
+                  <th >OS <i class="fa fa-server"></i></th>
+                  <th >Results <i class="fa fa-search"></i></th>
+                </tr>
+              </thead>
+              <tbody>
           
+              </tbody>
+            </table>
+          </div>
+        </div>
         </div>
         </div>
         </div>
