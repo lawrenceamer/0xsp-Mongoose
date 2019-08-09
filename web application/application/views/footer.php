@@ -19,8 +19,8 @@
     <script src="<?=base_url('storage/');?>js/loader.js"></script>
 <?php endif; ?>
   <?php if($this->uri->segment(1) == 'dashboard' && $this->uri->segment(2) == null): ?>
-  <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script src="<?=base_url('storage/');?>js/dataTables.bootstrap.min.js"></script>
+  <script src="<?=base_url('storage/');?>js/jquery.dataTables.min.js"></script>
    <script type="text/javascript">
     $(document).ready(function() {
             $('#datatable').DataTable( {    
