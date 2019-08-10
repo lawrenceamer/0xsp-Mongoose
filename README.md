@@ -4,7 +4,7 @@
 [<img src="https://img.shields.io/badge/sponsored%20by-Secploit-green.svg">](https://secploit.com/)
 [<img align="right" src="https://secploit.com/static/0xsp/trans.png" height="512" width="400">]()
 # 0xsp Mongoose Linux / Windows Privilege Escalation intelligent Enumeration Toolkit
-# windows Version WILL BE RELEASED ON 18 August
+# Windows Version WILL BE RELEASED ON 18 August
 using 0xsp mongoose you will be able to scan targeted operating system for any possible way for privilege escalation attacks,starting from 
 collecting information stage unitl reporting information through 0xsp Web Application API . 
 
