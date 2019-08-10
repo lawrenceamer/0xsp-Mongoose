@@ -6,7 +6,7 @@
 
 # 0xsp Mongoose Linux / Windows Privilege Escalation intelligent Enumeration Toolkit
 
-
+#windows Version WILL BE RELEASED ON 18 August 
 using 0xsp mongoose you will be able to scan targeted operating system for any possible way for privilege escalation attacks,starting from 
 collecting information stage unitl reporting information through 0xsp Web Application API . 
 
