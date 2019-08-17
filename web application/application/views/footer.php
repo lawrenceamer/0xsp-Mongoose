@@ -18,10 +18,10 @@
 <?php if($this->uri->segment(2) == 'scanresult'): ?>
     <script src="<?=base_url('storage/');?>js/loader.js"></script>
 <?php endif; ?>
-  <?php if($this->uri->segment(1) == 'dashboard' && $this->uri->segment(2) == null): ?>
   <script src="<?=base_url('storage/');?>js/dataTables.bootstrap.min.js"></script>
   <script src="<?=base_url('storage/');?>js/jquery.dataTables.min.js"></script>
-   <script type="text/javascript">
+  <?php if($this->uri->segment(1) == 'dashboard' && $this->uri->segment(2) == null): ?>
+    <script type="text/javascript">
     $(document).ready(function() {
             $('#datatable').DataTable( {    
                 "ajax": {
@@ -71,7 +71,35 @@
 
     });    
    </script>
-<?php endif ; ?>
+  <?php elseif($this->uri->segment(2) == 'downloadcenter'): ?>
+   <script>
+   
+        $(document).ready(function() {
+   
+             var table = $('#d_center').DataTable({    
+                "ajax": {
+                    "url": "<?=base_url('dashboard/getDownloadCenter/')?>",
+                    "type": "GET"
+                },            
+                "processing": true,
+                "serverSide": false,
+                "searching": false,
+                "order": [[ 1, "desc" ]],
+                "pageLength": 10,
+                    dom: 'Bfrtip',
+                "columns": [    
+                    { "data": "file_name"},                    
+                    { "data": "file_type" },
+                    { "data" : "id",
+                    render: function ( data, type, report ) {
+                    return '<a class="btn btn-success btn-lg" href="<?=base_url('dashboard/downloadFile/');?>' + data + '"><i class="fa fa-download"></i></a>';
+                    }},
+                ],
+            } );
+
+    });    
+   </script>
+  <?php endif ; ?>
 </body>
 
 </html>
