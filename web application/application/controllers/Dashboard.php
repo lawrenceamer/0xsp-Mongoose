@@ -4,8 +4,11 @@ class Dashboard extends CI_Controller{
 
     function __construct(){
         parent::__construct();
-
+        
+        $this->load->library('Datatables');  
         $this->load->model('api_model');
+        $this->load->helper('download');
+        
 
       $this->_cAuth();
     }
@@ -22,7 +25,37 @@ class Dashboard extends CI_Controller{
         $this->dashboard();
     }
 
-
+    function downloadcenter()
+    {
+        $data['title'] = 'Download Center';
+        $data['content'] = "download_center_view";
+        $this->load->view('layout',$data);
+    }
+    function getDownloadCenter()
+    {
+        $this->datatables->select('id,file_name,file_type');
+        $this->datatables->from('download_center');
+        echo $this->datatables->generate();
+    }
+    
+    function downloadFile($id)
+    {
+        $res = $this->api_model->downloadFile($id);
+        $mime = $this->api_model->getFileType($id);
+        if(!$res)
+        {
+            echo "id not found on our records";
+        }
+        else{
+            if(!force_download('./uploads/'.$res,NULL))
+            {
+                echo "please try again";
+            }else{
+                force_download('./uploads/'.$res,NULL);      
+                exit;
+            }
+        }
+    }
     public function dashboard()
     {
         $data['title'] = "Dashboard";
