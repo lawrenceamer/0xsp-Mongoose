@@ -36,7 +36,10 @@ class Api_model extends CI_Model{
     {
         $this->db->insert('outputs',$data);
     }
-
+    function insertDownloadCenter($da)
+    {
+        $this->db->insert('download_center',$da);
+    }
     function getHostOsName($host)
     {
         $this->db->where('random_val',$host);
