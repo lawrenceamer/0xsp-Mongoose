@@ -8,7 +8,7 @@
 
 
 using 0xsp mongoose you will be able to scan targeted operating system for any possible way for privilege escalation attacks,starting from 
-collecting information stage unitl reporting information through 0xsp Web Application API . 
+collecting information stage until reporting information through 0xsp Web Application API . 
 
 user will be able to scan  linux / Windows os system at same time with high perfromance , with out spending time looking inside the terminal or text file for what is found , mongoose shorten this way by allowing you to send these information directly into web application friendly interface through easy API endpoint . 
 
@@ -23,7 +23,7 @@ while executing `Agent` on targeted system with all required parameters . user i
 
 ### Agent Usage 
 
-2. ./agent.exe -h (display help instructions) 
+2. agent.exe -h (display help instructions) 
 
 ```
 -s --Enumerate Active Windows Services , Drivers  ..etc .
