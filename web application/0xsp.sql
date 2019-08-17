@@ -25,6 +25,37 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `download_center`
+--
+
+CREATE TABLE `download_center` (
+  `id` int(11) NOT NULL,
+  `file_name` varchar(255) NOT NULL,
+  `file_type` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `download_center`
+--
+ALTER TABLE `download_center`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `download_center`
+--
+ALTER TABLE `download_center`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+COMMIT;
+
+--
 -- Table structure for table `categories`
 --
 
