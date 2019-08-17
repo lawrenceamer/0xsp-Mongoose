@@ -40,6 +40,26 @@ class Api_model extends CI_Model{
     {
         $this->db->insert('download_center',$da);
     }
+    function downloadFile($id)
+    {
+        $this->db->where('id',$id);
+        $q = $this->db->get('download_center');
+        $data = $q->result();
+        foreach($data as $file){
+            return $file->file_name;
+        }
+    }
+    
+    function getFileType($id)
+    {
+        $this->db->where('id',$id);
+        $q = $this->db->get('download_center');
+        $data = $q->result();
+        foreach($data as $file){
+            return $file->file_type;
+        }
+    }
+        
     function getHostOsName($host)
     {
         $this->db->where('random_val',$host);
