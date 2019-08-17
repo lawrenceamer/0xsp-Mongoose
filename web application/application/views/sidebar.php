@@ -27,6 +27,11 @@
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?=base_url('dashboard/downloadcenter');?>">
+          <i class="fas fa-fw fa-download"></i>
+          <span>Download Center</span></a>
+      </li>               
       <!-- Divider -->
       <?php if($this->uri->segment(3)): ?>
       <hr class="sidebar-divider">
