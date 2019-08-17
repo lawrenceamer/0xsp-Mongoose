@@ -36,9 +36,11 @@
                 <input type="submit" class="btn btn-primary btn-user btn-block" value="Login">
                 <hr>
           </form>
+<!--
               <div class="text-center">
                 <a class="small" href="" data-toggle="modal" data-target="#resetPass">Forgot Password?</a>
               </div>
+-->
             </div>
           </div>
           
