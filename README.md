@@ -96,3 +96,4 @@ while executing `Agent` on targeted system with all required parameters . user i
 6. Fast As Mongoose 
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/lG3HS7a9sVc/0.jpg)](https://www.youtube.com/watch?v=lG3HS7a9sVc)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YRrnXPDVZlg/0.jpg)](https://www.youtube.com/watch?v=YRrnXPDVZlg)
