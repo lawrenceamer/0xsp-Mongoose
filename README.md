@@ -19,7 +19,7 @@ while executing `Agent` on targeted system with all required parameters . user i
 
 
 
-### Agent Usage 
+### Linux Agent Usage 
 
 1. make sure to give it executable permission `chmod +x agent`
 2. ./agent -h (display help instructions) 
@@ -42,7 +42,23 @@ while executing `Agent` on targeted system with all required parameters . user i
 
 
 ```
-
+### windows Agent Usage [Wiki](https://github.com/lawrenceamer/0xsp-Mongoose/wiki/Mongoose-Windows-Agent-Guide)
+```
+-s --Enumerate Active Windows Services , Drivers  ..etc .
+-u --Getting information about Users , groups , Roles , Releated information .
+-c --Search for Senstive Config files Accessible & Private stuff .
+-n --Retrieve Network information,interfaces ...etc .
+-w --Enumerate for Writeable Directories , Access Permission Check , Modified Permissions.
+-i --Enumerate Windows System information , Sessions , Releated information.
+-l --Search in Any File by Specific Keywork , ex : agent.exe -l c:\ password *.config.
+-o --Connect to 0xsp Mongoose Web Application API.
+-p --Enumerate installed Softwares , Running Processes, Tasks .
+-e --Kernel inspection Tool, it will help to search through tool databases for windows kernel vulnerabilities
+-x --Secret Key to authorize your connection with WebApp.
+-d --Download Files directly into Target Machine .
+-t --Upload Files From Target Machine into Mongoose Web Application API. [agent.exe -t filename api secretkey]
+-m --Run All Known Scan Types together .
+```
 ### Server Web App (must be like this  : http://host/0xsp/ )
 
 [<img src="https://secploit.com/static/0xsp/web.png">]()
