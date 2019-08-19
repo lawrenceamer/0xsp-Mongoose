@@ -42,7 +42,7 @@ while executing `Agent` on targeted system with all required parameters . user i
 
 
 ```
-### windows Agent Usage [Wiki](https://github.com/lawrenceamer/0xsp-Mongoose/wiki/Mongoose-Windows-Agent-Guide)
+### Windows Agent Usage [Wiki](https://github.com/lawrenceamer/0xsp-Mongoose/wiki/Mongoose-Windows-Agent-Guide)
 ```
 -s --Enumerate Active Windows Services , Drivers  ..etc .
 -u --Getting information about Users , groups , Roles , Releated information .
