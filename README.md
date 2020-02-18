@@ -3,7 +3,7 @@
 [<img src="https://img.shields.io/badge/build%20with-Lazarus-red.svg">](https://www.lazarus-ide.org/)
 [<img src="https://img.shields.io/badge/sponsored%20by-Secploit-green.svg">](https://secploit.com/)
 [<img align="right" src="https://secploit.com/static/0xsp/trans.png" height="512" width="400">]()
-[<img src="">](https://twitter.com/zux0x3a)
+[<img src="https://www.finextra.com/finextra-images/top_pics/xl/twitter.jpg" height="64" width="128">](https://twitter.com/zux0x3a)
 # 0xsp Mongoose Linux / Windows Privilege Escalation intelligent Enumeration Toolkit
 
 using 0xsp mongoose you will be able to scan targeted operating system for any possible way for privilege escalation attacks,starting from 
