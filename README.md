@@ -1,7 +1,6 @@
 [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
-[<img src="https://img.shields.io/badge/slack-@0xsp/npp-yellow.svg?logo=slack">](https://0xsp.slack.com/messages/CK3J9QWF2/)
+[<img src="https://img.shields.io/badge/join-telegram-blue">](https://t.me/join0xsp)
 [<img src="https://img.shields.io/badge/build%20with-Lazarus-red.svg">](https://www.lazarus-ide.org/)
-[<img src="https://img.shields.io/badge/sponsored%20by-Secploit-green.svg">](https://secploit.com/)
 [<img align="right" src="https://github.com/lawrenceamer/0xsp-Mongoose/blob/0xsp-red/lg.png?raw=true" height="512" width="400">]()
 [<img src="https://www.finextra.com/finextra-images/top_pics/xl/twitter.jpg" height="64" width="128">](https://twitter.com/zux0x3a)
 # 0xsp Mongoose Red for Winodws 
