@@ -5,11 +5,12 @@
 [<img src="https://www.finextra.com/finextra-images/top_pics/xl/twitter.jpg" height="64" width="128">](https://twitter.com/zux0x3a)
 # 0xsp Mongoose Red for Winodws 
 
-0xsp mongoose red version released and provided to assist your offensive simulation, beside doing auditing for possible privilege escalation or misconfiguration on windows environment.the newer version has been favored by adding more red teaming techniques, and enhacning the performance and flexiabliity 
+0xsp mongoose red version is provided to assist your needs during cyber security simulation, by using this version you will be able to audit a targeted windows operation system 
+for system vulnerabilities, misconfigurations and privilege escalation attacks.
 
 with node js support for web application api, it becomes much easier for installtion and customization in timely manner, the windows sensor agent will communicate with application api to transfer results, and recieve commands as bidirectional technique. 
 
-by using windows update api, agent will able to identify the following vulnerabilities :
+by using windows update api, agent will able to identify the following vulnerabilities 
  
 * CVE-2019-0836
 * CVE-2019-0841
@@ -26,11 +27,13 @@ by using windows update api, agent will able to identify the following vulnerabi
 
 ## Features 
 
-* Lateral movements techniques 
-* Bidirectional communication channel
-* Plugins online packaging  
-* Enhanced exploit detecter scripting engine 
-* abusing user access control 
+* Lateral movements techniques. 
+* Bidirectional communication channel.
+* Plugins online packaging.  
+* Enhanced exploit detecter scripting engine. 
+* weaponization of run-as-user windows api function.
+* local network scanning and shares enumeration.
+* lsass memory dummping technique (plugin).
 
 
 ### Usage 
