@@ -7,11 +7,33 @@
 
 0xsp mongoose red version released and provided to assist your offensive simulation, beside doing auditing for possible privilege escalation or misconfiguration on windows environment.the newer version has been favored by adding more red teaming techniques, and enhacning the performance and flexiabliity 
 
-with node js support for web application api, it becomes much easier for installtion and customization in timely manner, the windows sensor agent will communicate with application api to transfer results, and recieve commands. 
+with node js support for web application api, it becomes much easier for installtion and customization in timely manner, the windows sensor agent will communicate with application api to transfer results, and recieve commands as bidirectional technique. 
+
+by using windows update api, agent will able to identify the following vulnerabilities :
+ 
+* CVE-2019-0836
+* CVE-2019-0841
+* CVE-2019-1064
+* CVE-2019-1130
+* CVE-2019-1253
+* CVE-2019-1385
+* CVE-2019-1388
+* CVE-2019-1405
+* CVE-2019-1315
+* CVE-2020-0787
+* CVE-2020-0796
+* CVE-2020-0797 
+
+## Features 
+
+* Lateral movements techniques 
+* Bidirectional communication channel
+* Plugins online packaging  
+* Enhanced exploit detecter scripting engine 
+* abusing user access control 
 
 
-
-### Windows auditing options [Wiki](https://github.com/lawrenceamer/0xsp-Mongoose/wiki/Mongoose-Windows-Agent-Guide)
+### Usage 
 ```
 -s --Enumerate Active Windows Services , Drivers  ..etc .
 -u --Getting information about Users , groups , Roles , Releated information .
@@ -42,6 +64,3 @@ with node js support for web application api, it becomes much easier for install
 ./agent -c -e localhost -x 0sxp { will run two scans together and send found results directly }
 ./agent -m -o 10.10.13.1 -x 0xsp { RUN all Scans together and export it to Web API} 
 ```
-
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/lG3HS7a9sVc/0.jpg)](https://www.youtube.com/watch?v=lG3HS7a9sVc)
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YRrnXPDVZlg/0.jpg)](https://www.youtube.com/watch?v=YRrnXPDVZlg)
