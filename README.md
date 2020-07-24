@@ -41,11 +41,16 @@ vulnerabilities.
 ### installation 
 
 ```
-git clone --single-branch --branch 0xsp-red https://github.com/lawrenceamer/0xsp-mongoose
+git clone https://github.com/lawrenceamer/0xsp-mongoose
+git clone --single-branch --branch 0xsp-red https://github.com/lawrenceamer/0xsp-mongoose 
 cd 0xsp-mongoose/ 
 npm install 
 node index.js
 ```
+
+[<img align="right" src="https://i.imgur.com/EQOsiv8.png">]()
+
+
 
 ### quick deploy of agent 
 
