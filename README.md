@@ -10,7 +10,7 @@ for system vulnerabilities, misconfigurations and privilege escalation attacks.
 
 with node js support for web application api, it becomes much easier for installtion and customization in timely manner, the windows sensor agent will communicate with application api to transfer results, and recieve commands as bidirectional technique. 
 
-the agent is able to identify and detect windows exploits by using `windows update api` and `exploit database denfinitions` modules, the new release will detect also the following 
+the agent is able to identify and detect windows exploits by using `windows update api` and `exploit database definitions` modules, the new release will detect also the following 
 vulnerabilities.
  
 * CVE-2019-0836
@@ -77,7 +77,7 @@ certutil.exe -urlcache -split -f "http://nodejsip:4000/release/x64.exe" agent.ex
 -t --upload Files From target machine into node js application.
 -m --run all known scan Types together .
 
--r --spawn a reverse shell with specific account .
+-r --spawn a reverse shell with specific account(weaponization of run-as-user windows api function).
 -lr --Lateral movement technique using WMI (e.g -lr -host 192.168.14.1 -username administrator -password blabla -srvhost nodejsip )
 -nds --network discovery and share enumeration
 -cmd --transfer commands via HTTP Shell
