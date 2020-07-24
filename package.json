@@ -1,7 +1,7 @@
 {
   "name": "0xsp",
-  "version": "1.7.0",
-  "description": "Privilege Escalation Enumeration Toolkit (64/32 ) , fast , intelligent enumeration with Web API integration . Mastering Your Own Finding https://0xsp.com",
+  "version": "2.1",
+  "description": "a unique framework for cybersecurity simulation and red teaming operations, windows auditing for newer vulnerabilities, misconfigurations and privilege escalations attacks",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
