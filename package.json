@@ -1,0 +1,36 @@
+{
+  "name": "0xsp",
+  "version": "1.7.0",
+  "description": "Privilege Escalation Enumeration Toolkit (64/32 ) , fast , intelligent enumeration with Web API integration . Mastering Your Own Finding https://0xsp.com",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lawrenceamer/0xsp-Mongoose.git"
+  },
+  "author": "Lawrance Amer",
+  "license": "GPLv3",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.17.2",
+    "check-internet-connected": "^2.0.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.15.3",
+    "express-messages": "^1.0.1",
+    "express-sanitizer": "^1.0.5",
+    "express-validator": "^3.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.15",
+    "multer": "^1.4.2",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.5",
+    "sqlite3": "^4.2.0"
+  },
+  "bugs": {
+    "url": "https://github.com/lawrenceamer/0xsp-Mongoose/issues"
+  },
+  "homepage": "https://github.com/lawrenceamer/0xsp-Mongoose#readme"
+}
