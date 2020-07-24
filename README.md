@@ -38,6 +38,17 @@ vulnerabilities.
 * local network scanning and shares enumeration.
 * lsass memory dummping technique (plugin).
 
+### installation 
+
+```
+git clone --single-branch --branch 0xsp-red https://github.com/lawrenceamer/0xsp-mongoose
+cd 0xsp-mongoose/ 
+npm install 
+node index.js
+```
+
+### quick deploy of agent 
+
 
 ### Usage 
 ```
