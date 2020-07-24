@@ -27,6 +27,8 @@ by using windows update api, agent will able to identify the following vulnerabi
 
 ## Features 
 
+* web application built with NodeJS 
+* supports sqlite DB 
 * Lateral movements techniques. 
 * Bidirectional communication channel.
 * Plugins online packaging.  
