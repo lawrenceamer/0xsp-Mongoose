@@ -49,6 +49,16 @@ node index.js
 
 ### quick deploy of agent 
 
+```
+#example 1 
+curl.exe -o agent.exe http://nodejsip:4000/release/x64.exe
+#example 2 
+powershell.exe -command (new-object net.webclient).downloadfile('http://nodejsip:4000/release/x64.exe','c:\tmp\agent.exe');
+#example 3 
+certutil.exe -urlcache -split -f "http://nodejsip:4000/release/x64.exe" agent.exe
+
+```
+
 
 ### Usage 
 ```
