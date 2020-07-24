@@ -10,7 +10,8 @@ for system vulnerabilities, misconfigurations and privilege escalation attacks.
 
 with node js support for web application api, it becomes much easier for installtion and customization in timely manner, the windows sensor agent will communicate with application api to transfer results, and recieve commands as bidirectional technique. 
 
-by using windows update api, agent will able to identify the following vulnerabilities 
+the agent is able to identify and detect windows exploits by using `windows update api` and `exploit database denfinitions` modules, the new release will detect also the following 
+vulnerabilities.
  
 * CVE-2019-0836
 * CVE-2019-0841
