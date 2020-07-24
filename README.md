@@ -8,7 +8,7 @@
 0xsp mongoose red version is provided to assist your needs during cyber security simulation, by using this version you will be able to audit a targeted windows operation system 
 for system vulnerabilities, misconfigurations and privilege escalation attacks.
 
-with node js support for web application api, it becomes much easier for installtion and customization in timely manner, the windows sensor agent will communicate with application api to transfer results, and recieve commands as bidirectional technique. 
+with node js support for web application api, it becomes much easier for installation and customization in timely manner, the windows sensor agent will communicate with application api to transfer results, and receive commands as bidirectional technique. 
 
 the agent is able to identify and detect windows exploits by using `windows update api` and `exploit database definitions` modules, the new release will detect also the following 
 vulnerabilities.
@@ -31,7 +31,7 @@ vulnerabilities.
 * web application built with NodeJS 
 * supports sqlite DB 
 * Lateral movements techniques. 
-* Bidirectional communication channel.
+* Bidirectional communication channel.[ video ](https://www.youtube.com/watch?v=tyhBuWCB_aY)
 * Plugins online packaging.  
 * Enhanced exploit detecter scripting engine. 
 * weaponization of run-as-user windows api function.
