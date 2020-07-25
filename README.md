@@ -99,3 +99,11 @@ https://github.com/lawrenceamer/0xsp-Mongoose/wiki/0xsp-mongoose-red-version-2.1
 
 ### detailed research site 
 https://0xsp.com 
+
+### contribution 
+the project is opensourced and has been built with Lazarus IDE, you are welcomed to suggest any ideas or reporting bugs 
+
+### tool tutorials 
+make sure to subsribe into the following channel to be notified when new tutorial and tricks published for 0xsp 
+https://www.youtube.com/channel/UCoEr6Qsyd6oMsPmaJPQ_FOg
+
