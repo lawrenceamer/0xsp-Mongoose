@@ -104,6 +104,6 @@ https://0xsp.com
 the project is opensourced and has been built with Lazarus IDE, you are welcomed to suggest any ideas or reporting bugs 
 
 ### tool tutorials 
-make sure to subsribe into the following channel to be notified when new tutorial and tricks published for 0xsp 
+make sure to subscribe into the following channel to be notified when new tutorial and tricks published for 0xsp 
 https://www.youtube.com/channel/UCoEr6Qsyd6oMsPmaJPQ_FOg
 
