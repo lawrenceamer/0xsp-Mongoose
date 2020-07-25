@@ -41,12 +41,14 @@ vulnerabilities.
 ### installation 
 
 ```
-git clone https://github.com/lawrenceamer/0xsp-mongoose
 git clone --single-branch --branch 0xsp-red https://github.com/lawrenceamer/0xsp-mongoose 
 cd 0xsp-mongoose/ 
 npm install 
 node index.js
 ```
+default access credentials :
+* username : admin 
+* password : 0xsp
 
 [<img align="right" src="https://i.imgur.com/EQOsiv8.png">]()
 
