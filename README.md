@@ -6,7 +6,7 @@
 # 0xsp Mongoose Red for Winodws 
 
 0xsp mongoose red version is provided to assist your needs during cyber security simulation, by using this version you will be able to audit a targeted windows operation system 
-for system vulnerabilities, misconfigurations and privilege escalation attacks.
+for system vulnerabilities, misconfigurations and privilege escalation attacks and replicate the tactics and techniques of an advanced adversary in a network.
 
 with node js support for web application API, it becomes much easier for installation and customization in timely manner, the windows sensor agent will communicate with application API to transfer results, and receive commands as bidirectional technique. 
 
