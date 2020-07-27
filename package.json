@@ -1,6 +1,6 @@
 {
   "name": "0xsp",
-  "version": "2.1",
+  "version": "2.0.1",
   "description": "a unique framework for cybersecurity simulation and red teaming operations, windows auditing for newer vulnerabilities, misconfigurations and privilege escalations attacks",
   "main": "index.js",
   "scripts": {
