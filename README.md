@@ -2,7 +2,9 @@
 [<img src="https://img.shields.io/badge/join-telegram-blue">](https://t.me/join0xsp)
 [<img src="https://img.shields.io/badge/build%20with-Lazarus-red.svg">](https://www.lazarus-ide.org/)
 [<img align="right" src="https://github.com/lawrenceamer/0xsp-Mongoose/blob/0xsp-red/lg.png?raw=true" height="512" width="400">]()
+[<img src="https://img.shields.io/badge/join-discord-orange">](https://discord.gg/Xsdxxkm)
 [<img src="https://www.finextra.com/finextra-images/top_pics/xl/twitter.jpg" height="64" width="128">](https://twitter.com/zux0x3a)
+
 # 0xsp Mongoose Red for Winodws 
 
 0xsp mongoose red version is provided to assist your needs during cyber security simulation, by using this version you will be able to audit a targeted windows operation system 
