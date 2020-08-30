@@ -32,7 +32,7 @@ vulnerabilities.
 
 * web application built with NodeJS 
 * supports sqlite DB 
-* Lateral movements techniques. 
+* Lateral movements techniques. [ video](https://www.youtube.com/watch?v=pEpiOrpyYs8)
 * Bidirectional communication channel.[ video ](https://www.youtube.com/watch?v=tyhBuWCB_aY)
 * Plugins online packaging.  
 * Enhanced exploit detecter scripting engine. 
