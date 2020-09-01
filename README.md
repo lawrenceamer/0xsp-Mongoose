@@ -30,6 +30,7 @@ vulnerabilities.
 
 ## Features 
 
+* Windows Privilege escalation scanning techniques. 
 * web application built with NodeJS 
 * supports sqlite DB 
 * Lateral movements techniques. [ video](https://www.youtube.com/watch?v=pEpiOrpyYs8)
