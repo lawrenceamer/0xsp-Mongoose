@@ -36,7 +36,7 @@ vulnerabilities.
 * Bidirectional communication channel.[ video ](https://www.youtube.com/watch?v=tyhBuWCB_aY)
 * Plugins online packaging.  
 * Enhanced exploit detecter scripting engine. 
-* weaponization of run-as-user windows api function.
+* weaponization of run-as-user windows api function. [Video](https://youtu.be/oe-BFZpV8nw)
 * local network scanning and shares enumeration.
 * lsass memory dummping technique (plugin).
 
