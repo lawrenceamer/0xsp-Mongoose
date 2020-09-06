@@ -3,7 +3,7 @@
 [<img src="https://img.shields.io/badge/build%20with-Lazarus-red.svg">](https://www.lazarus-ide.org/)
 [<img align="right" src="https://github.com/lawrenceamer/0xsp-Mongoose/blob/0xsp-red/lg.png?raw=true" height="512" width="400">]()
 [<img src="https://img.shields.io/badge/join-discord-orange">](https://discord.gg/Xsdxxkm)
-<img src="https://img.shields.io/twitter/follow/zux0x3a?label=follow&style=social">
+[<img src="https://img.shields.io/twitter/follow/zux0x3a?label=follow&style=social">](https://twitter.com/zux0x3a)
 
 # 0xsp Mongoose Red for Winodws 
 
