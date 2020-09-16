@@ -27,6 +27,7 @@ vulnerabilities.
 * CVE-2020-0787
 * CVE-2020-0796
 * CVE-2020-0797 
+* CVE-2020-1472
 
 ## Features 
 
