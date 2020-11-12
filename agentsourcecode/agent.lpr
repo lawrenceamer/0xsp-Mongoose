@@ -136,7 +136,7 @@ var
   ErrorMsg: String;
 begin
   // quick check parameters
-  ErrorMsg:=CheckOptions('h s u i p n c l d e w o x m t r username password host lr nds srvhost interactive cmd', 'help services userinfo systeminfo programs networking configs lookup downloadfile exploits acl host secretkey mongoose transfer runas ');
+  ErrorMsg:=CheckOptions('h s u i p n c l d e w o x m t r username password host lr nds srvhost interactive cmd bf', 'help services userinfo systeminfo programs networking configs lookup downloadfile exploits acl host secretkey mongoose transfer runas bruteforce');
   if ErrorMsg<>'' then begin
     ShowException(Exception.Create(ErrorMsg));
     Terminate;
@@ -202,6 +202,9 @@ begin
   if hasoption('nds') then begin
      networkdiscovery;
     // terminate;
+  end;
+  if hasoption('bf') then begin
+  // windows account bruteforce Local or Domain user
   end;
   if hasoption('m','mongoose') then begin
      systeminfo;
