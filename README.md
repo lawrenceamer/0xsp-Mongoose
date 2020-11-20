@@ -105,6 +105,9 @@ https://github.com/lawrenceamer/0xsp-Mongoose/wiki/0xsp-mongoose-red-version-2.1
 ### detailed research site 
 https://0xsp.com 
 
+### Security Conferences 
+* Standoff365 - Russia (https://standoff365.com/conferences/357)
+
 ### contribution 
 the project is opensourced and has been built with Lazarus IDE, you are welcomed to suggest any ideas or reporting bugs 
 
