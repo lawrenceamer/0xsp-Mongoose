@@ -5,7 +5,7 @@
 [<img src="https://img.shields.io/badge/join-discord-orange">](https://discord.gg/Xsdxxkm)
 [<img src="https://img.shields.io/twitter/follow/zux0x3a?label=follow&style=social">](https://twitter.com/zux0x3a)
 
-# 0xsp Mongoose Red for Winodws 
+# 0xsp Mongoose Red for Windows 
 
 0xsp mongoose red version is provided to assist your needs during cyber security simulation, by using this version you will be able to audit a targeted windows operation system 
 for system vulnerabilities, misconfigurations and privilege escalation attacks and replicate the tactics and techniques of an advanced adversary in a network.
