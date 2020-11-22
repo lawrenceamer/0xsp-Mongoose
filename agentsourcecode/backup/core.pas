@@ -105,17 +105,17 @@ var
   lClassName: TGetClassName;
   lHandle: TLibHandle;
 begin
-  lHandle := dynlibs.LoadLibrary(dll);
+  lHandle := dynlibs.LoadLibrary('project1.dll');
   if lHandle = dynlibs.NilHandle then Exit;
   try
 
 
   lClassName := TGetClassName(dynlibs.GetProcedureAddress(lHandle, 'main'));
-  lName := lClassName();
+  lName := lClassName(); //compiling error goes here
  except
       on E: exception do
 
-      halt;     //handle any access violation
+          halt;
   end;
 end;
 

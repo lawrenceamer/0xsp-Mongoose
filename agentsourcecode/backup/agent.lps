@@ -2,15 +2,15 @@
 <CONFIG>
   <ProjectSession>
     <Version Value="11"/>
-    <BuildModes Active="Release"/>
+    <BuildModes Active="Default"/>
     <Units Count="8">
       <Unit0>
         <Filename Value="agent.lpr"/>
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
         <TopLine Value="697"/>
-        <CursorPos X="54" Y="714"/>
-        <UsageCount Value="68"/>
+        <CursorPos X="31" Y="717"/>
+        <UsageCount Value="67"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -19,28 +19,28 @@
         <EditorIndex Value="1"/>
         <TopLine Value="124"/>
         <CursorPos X="31" Y="111"/>
-        <UsageCount Value="68"/>
+        <UsageCount Value="67"/>
         <Loaded Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="services.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="68"/>
+        <UsageCount Value="67"/>
       </Unit2>
       <Unit3>
         <Filename Value="netenum.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="68"/>
+        <UsageCount Value="67"/>
       </Unit3>
       <Unit4>
         <Filename Value="wmi.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="68"/>
+        <UsageCount Value="67"/>
       </Unit4>
       <Unit5>
         <Filename Value="exploitchecker.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="68"/>
+        <UsageCount Value="67"/>
       </Unit5>
       <Unit6>
         <Filename Value="/home/zux0x3a/Pascal/fpcupdeluxe/fpcsrc/packages/rtl-extra/src/wince/winsock.pp"/>
