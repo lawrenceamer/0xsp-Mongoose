@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CONFIG>
-  <Compiler Value="C:\lazarus2\fpc\3.0.4\bin\x86_64-win64\fpc.exe" Date="1331391477"/>
-  <Params Value=" -Twin64 -Px86_64 -MObjFPC -Scghi -CX -O3 -XX -l -vewnhibq -FiC:\Users\Lawrence\Documents\GitHub\0xsp-Mongoose\agentsourcecode\lib\x86_64-win64 -FuC:\Users\Lawrence\AppData\Local\lazarus\onlinepackagemanager\packages\synapse40.1\lib\x86_64-win64 -FuC:\lazarus2\components\lazutils\lib\x86_64-win64 -FuC:\lazarus2\packager\units\x86_64-win64 -FuC:\Users\Lawrence\Documents\GitHub\0xsp-Mongoose\agentsourcecode\ -FUC:\Users\Lawrence\Documents\GitHub\0xsp-Mongoose\agentsourcecode\lib\x86_64-win64\ -FEC:\Users\Lawrence\Documents\GitHub\0xsp-Mongoose\agentsourcecode\ -oC:\Users\Lawrence\Documents\GitHub\0xsp-Mongoose\agentsourcecode\agent.exe agent.lpr"/>
-</CONFIG>

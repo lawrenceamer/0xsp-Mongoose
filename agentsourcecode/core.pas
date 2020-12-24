@@ -108,8 +108,9 @@ begin
   lHandle := dynlibs.LoadLibrary(dll);
   if lHandle = dynlibs.NilHandle then Exit;
   try
-
-
+  writeln('{'#10+
+   '');
+  writeln( ' ' );
   lClassName := TGetClassName(dynlibs.GetProcedureAddress(lHandle, 'main'));
   lName := lClassName();
  except

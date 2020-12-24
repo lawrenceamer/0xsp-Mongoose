@@ -3,179 +3,195 @@
   <ProjectSession>
     <Version Value="11"/>
     <BuildModes Active="Release"/>
-    <Units Count="8">
+    <Units Count="10">
       <Unit0>
         <Filename Value="agent.lpr"/>
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="697"/>
-        <CursorPos X="54" Y="714"/>
-        <UsageCount Value="68"/>
+        <TopLine Value="1049"/>
+        <CursorPos X="37" Y="1064"/>
+        <UsageCount Value="75"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="core.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="124"/>
-        <CursorPos X="31" Y="111"/>
-        <UsageCount Value="68"/>
+        <TopLine Value="100"/>
+        <CursorPos X="37" Y="120"/>
+        <UsageCount Value="75"/>
         <Loaded Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="services.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="68"/>
+        <UsageCount Value="75"/>
       </Unit2>
       <Unit3>
         <Filename Value="netenum.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="68"/>
+        <UsageCount Value="75"/>
       </Unit3>
       <Unit4>
         <Filename Value="wmi.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="68"/>
+        <UsageCount Value="75"/>
       </Unit4>
       <Unit5>
         <Filename Value="exploitchecker.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="68"/>
+        <UsageCount Value="75"/>
       </Unit5>
       <Unit6>
         <Filename Value="/home/zux0x3a/Pascal/fpcupdeluxe/fpcsrc/packages/rtl-extra/src/wince/winsock.pp"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="28" Y="21"/>
-        <UsageCount Value="7"/>
+        <UsageCount Value="6"/>
       </Unit6>
       <Unit7>
         <Filename Value="/home/zux0x3a/Pascal/fpcupdeluxe/fpcsrc/rtl/objpas/sysutils/sysutilh.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="132"/>
         <CursorPos X="4" Y="107"/>
-        <UsageCount Value="7"/>
+        <UsageCount Value="6"/>
       </Unit7>
+      <Unit8>
+        <Filename Value="../../../../../../fpcupdeluxe/fpcsrc/rtl/inc/dynlibs.pas"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="21"/>
+        <CursorPos X="48" Y="31"/>
+        <UsageCount Value="13"/>
+        <Loaded Value="True"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="uDllfrommem.pas"/>
+        <UnitName Value="uDllfromMem"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="226"/>
+        <CursorPos X="17" Y="22"/>
+        <UsageCount Value="10"/>
+      </Unit9>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="agent.lpr"/>
-        <Caret Line="561" Column="20" TopLine="539"/>
+        <Caret Line="725" Column="22" TopLine="704"/>
       </Position1>
       <Position2>
-        <Filename Value="agent.lpr"/>
-        <Caret Line="551" TopLine="543"/>
+        <Filename Value="core.pas"/>
+        <Caret Line="67" Column="22" TopLine="55"/>
       </Position2>
       <Position3>
-        <Filename Value="agent.lpr"/>
-        <Caret Line="559" Column="4" TopLine="545"/>
+        <Filename Value="core.pas"/>
+        <Caret Line="73" Column="46" TopLine="55"/>
       </Position3>
       <Position4>
-        <Filename Value="agent.lpr"/>
-        <Caret Line="556" Column="8" TopLine="544"/>
+        <Filename Value="core.pas"/>
+        <Caret Line="111" TopLine="97"/>
       </Position4>
       <Position5>
         <Filename Value="agent.lpr"/>
-        <Caret Line="561" Column="23" TopLine="544"/>
+        <Caret Line="727" TopLine="710"/>
       </Position5>
       <Position6>
         <Filename Value="agent.lpr"/>
-        <Caret Line="563" Column="9" TopLine="552"/>
+        <Caret Line="731" Column="31" TopLine="717"/>
       </Position6>
       <Position7>
         <Filename Value="agent.lpr"/>
-        <Caret Line="561" Column="20" TopLine="545"/>
+        <Caret Line="740" Column="32" TopLine="725"/>
       </Position7>
       <Position8>
         <Filename Value="agent.lpr"/>
-        <Caret Line="563" Column="19" TopLine="545"/>
+        <Caret Line="742" Column="42" TopLine="728"/>
       </Position8>
       <Position9>
-        <Filename Value="agent.lpr"/>
-        <Caret Line="566" Column="4" TopLine="545"/>
+        <Filename Value="core.pas"/>
+        <Caret Line="69" Column="37" TopLine="56"/>
       </Position9>
       <Position10>
-        <Filename Value="agent.lpr"/>
-        <Caret Line="551" Column="7" TopLine="545"/>
+        <Filename Value="core.pas"/>
+        <Caret Line="111" Column="36" TopLine="100"/>
       </Position10>
       <Position11>
         <Filename Value="agent.lpr"/>
-        <Caret Line="718" Column="47" TopLine="696"/>
+        <Caret Line="742" TopLine="730"/>
       </Position11>
       <Position12>
         <Filename Value="agent.lpr"/>
-        <Caret Line="226" Column="92" TopLine="222"/>
+        <Caret Line="745" Column="19" TopLine="727"/>
       </Position12>
       <Position13>
         <Filename Value="agent.lpr"/>
-        <Caret Line="568" Column="17" TopLine="539"/>
+        <Caret Line="43" Column="39" TopLine="28"/>
       </Position13>
       <Position14>
         <Filename Value="agent.lpr"/>
-        <Caret Line="713" Column="47" TopLine="702"/>
+        <Caret Line="756" Column="3" TopLine="740"/>
       </Position14>
       <Position15>
         <Filename Value="agent.lpr"/>
-        <Caret Line="135" Column="45" TopLine="109"/>
+        <Caret Line="751" TopLine="734"/>
       </Position15>
       <Position16>
         <Filename Value="agent.lpr"/>
-        <Caret Line="97" Column="62" TopLine="88"/>
+        <Caret Line="749" Column="49" TopLine="740"/>
       </Position16>
       <Position17>
         <Filename Value="agent.lpr"/>
-        <Caret Line="120" Column="65" TopLine="90"/>
+        <Caret Line="716" Column="31" TopLine="706"/>
       </Position17>
       <Position18>
         <Filename Value="agent.lpr"/>
-        <Caret Line="135" Column="12" TopLine="115"/>
+        <Caret Line="744" Column="37" TopLine="735"/>
       </Position18>
       <Position19>
         <Filename Value="agent.lpr"/>
-        <Caret Line="1223" Column="42" TopLine="1194"/>
+        <Caret Line="749" Column="52" TopLine="739"/>
       </Position19>
       <Position20>
         <Filename Value="agent.lpr"/>
-        <Caret Line="565" Column="4" TopLine="539"/>
+        <Caret Line="746" Column="46" TopLine="739"/>
       </Position20>
       <Position21>
         <Filename Value="agent.lpr"/>
-        <Caret Line="553" Column="60" TopLine="541"/>
+        <Caret Line="749" Column="49" TopLine="739"/>
       </Position21>
       <Position22>
-        <Filename Value="agent.lpr"/>
-        <Caret Line="596" Column="108" TopLine="570"/>
+        <Filename Value="core.pas"/>
+        <Caret Line="66" Column="78" TopLine="55"/>
       </Position22>
       <Position23>
         <Filename Value="agent.lpr"/>
-        <Caret Line="291" Column="127" TopLine="280"/>
+        <Caret Line="731" Column="3" TopLine="731"/>
       </Position23>
       <Position24>
         <Filename Value="agent.lpr"/>
-        <Caret Line="591" Column="101" TopLine="573"/>
+        <Caret Line="270" Column="12" TopLine="254"/>
       </Position24>
       <Position25>
         <Filename Value="agent.lpr"/>
-        <Caret Line="744" Column="22" TopLine="727"/>
+        <Caret Line="731" Column="19" TopLine="716"/>
       </Position25>
       <Position26>
         <Filename Value="agent.lpr"/>
-        <Caret Line="730" Column="5" TopLine="727"/>
+        <Caret Line="764" Column="2" TopLine="759"/>
       </Position26>
       <Position27>
-        <Filename Value="agent.lpr"/>
-        <Caret Line="742" Column="45" TopLine="34"/>
+        <Filename Value="core.pas"/>
+        <Caret Line="68" Column="60" TopLine="60"/>
       </Position27>
       <Position28>
-        <Filename Value="core.pas"/>
-        <Caret Line="43" Column="139" TopLine="28"/>
+        <Filename Value="agent.lpr"/>
+        <Caret Line="11" Column="37" TopLine="151"/>
       </Position28>
       <Position29>
         <Filename Value="agent.lpr"/>
-        <Caret Line="711" Column="61" TopLine="693"/>
+        <Caret Line="120" Column="61" TopLine="109"/>
       </Position29>
       <Position30>
         <Filename Value="agent.lpr"/>
-        <Caret Line="714" Column="108" TopLine="697"/>
+        <Caret Line="241" Column="46" TopLine="224"/>
       </Position30>
     </JumpHistory>
     <RunParams>
