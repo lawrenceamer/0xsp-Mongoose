@@ -40,21 +40,24 @@ unit core;
 interface
 
 uses
-  Classes,SysUtils,process,windows,jwatlhelp32,lconvencoding,fpjson,jsonparser,blcksock,base64,FileUtil,httpsend,synautil,WinSock,dynlibs,FPHTTPClient;
+  Classes,SysUtils,process,windows,jwatlhelp32,lconvencoding,fpjson,jsonparser,blcksock,base64,FileUtil,httpsend,synautil,WinSock,dynlibs,FPHTTPClient,WinInet;
 type
   TGetClassName = function: String; stdcall;
 
+function request(const AUrl, AData: ansistring; resource : string; blnSSL: Boolean = True): AnsiString;
 function getwindowsv:string;
 procedure Uploadfile(FileName: string;api:string);
 function RandomString:String;
 function sendcm(postdata:wideString):String;
-function PostRequest(postdata:wideString;ip:string;sys:string;cat:string):String;
+//function PostRequest(postdata:wideString;ip:string;sys:string;cat:string):String;
+function postrequest(const AData,ip,sys,cat : ansistring): AnsiString;
 function getlocalip:string;
 function FileVersion(const FileName: TFileName): String;
 procedure Split (const Delimiter: Char; Input: string; const Strings: TStrings);
 procedure exploitinspection;
 FUNCTION WritableDir(CONST Dir : STRING) : BOOLEAN;
-function downloadfile(url:string;filename:string):string;
+//function downloadfile(url:string;filename:string):string;
+procedure DownloadFile(URL: string; Path: string);
 function findastring(PathName,FileName:string;Texttofind:string;InDir:boolean):string;
 procedure GetDriveLetters(AList: TStrings);
 function SystemFolder: string;
@@ -69,7 +72,7 @@ function load_library(dll:string):string;
 const
   BUF_SIZE = 2048;
   DEF_PORT = ':4000';  // default port of node js application api
-
+  DEF_PORT_S = 4000;
   const
   BUILD_FREE_VAL = word($F000);
 
@@ -133,6 +136,95 @@ begin
   res := ip+os+d;
   result :=EncodeStringBase64(res);
 end;
+
+
+
+// using winet api
+function request(const AUrl, AData: ansistring; resource:string; blnSSL: Boolean = True): AnsiString;
+var
+  aBuffer     : Array[0..4096] of Char;
+  Header      : TStringStream;
+  BufStream   : TMemoryStream;
+  sMethod     : AnsiString;
+  BytesRead   : Cardinal;
+  pSession    : HINTERNET;
+  pConnection : HINTERNET;
+  pRequest    : HINTERNET;
+  parsedURL   : TStringArray;
+  port        : Integer;
+  flags       : DWord;
+
+begin
+
+  Result := '';
+
+  pSession := InternetOpen('Mozilla/5.0(compatible; WinInet)', INTERNET_OPEN_TYPE_PRECONFIG, nil, nil, 0);
+
+  if Assigned(pSession) then
+  try
+    if blnSSL then
+      Port := 4000
+    else
+      Port := 4000;
+    pConnection := InternetConnect(pSession, PChar(Aurl), port, nil, nil, INTERNET_SERVICE_HTTP, 0, 0);
+
+    if Assigned(pConnection) then
+    try
+
+      if blnSSL then
+        flags := INTERNET_FLAG_SECURE or INTERNET_FLAG_KEEP_CONNECTION
+      else
+        flags := INTERNET_SERVICE_HTTP;
+
+      pRequest := HTTPOpenRequest(pConnection, pchar('POST'), pchar(resource), nil, nil, nil, flags, 0);
+
+      if Assigned(pRequest) then
+      try
+        Header := TStringStream.Create('');
+        try
+          with Header do
+          begin
+            WriteString('Host: ' + Aurl+':4000' + sLineBreak);
+            WriteString('User-Agent: Mozilla/5.0(compatible; 0xsp-mongoose'+SLineBreak);
+            WriteString('Content-Type: application/x-www-form-urlencoded'+SLineBreak);
+            WriteString('key: test'+SlineBreak+SLineBreak);
+          end;
+
+          HttpAddRequestHeaders(pRequest, PChar(Header.DataString), Length(Header.DataString), HTTP_ADDREQ_FLAG_ADD);
+
+          if HTTPSendRequest(pRequest, nil, 0, Pointer(AData), Length(AData)) then
+          begin
+            BufStream := TMemoryStream.Create;
+            try
+              while InternetReadFile(pRequest, @aBuffer, SizeOf(aBuffer), BytesRead) do
+              begin
+                if (BytesRead = 0) then Break;
+                BufStream.Write(aBuffer, BytesRead);
+              end;
+
+              aBuffer[0] := #0;
+              BufStream.Write(aBuffer, 1);
+              Result := PChar(BufStream.Memory);
+            finally
+              BufStream.Free;
+            end;
+          end;
+        finally
+          Header.Free;
+        end;
+      finally
+        InternetCloseHandle(pRequest);
+      end;
+    finally
+      InternetCloseHandle(pConnection);
+    end;
+  finally
+    InternetCloseHandle(pSession);
+  end;
+end;
+
+//end of it
+
 function sendcm(postdata:wideString):String;
 var
   FPHTTPClient: TFPHTTPClient;
@@ -166,7 +258,7 @@ FPHTTPClient.AllowRedirect := True;
 FPHTTPClient.AddHeader('key','test');
 //HTTP.AddHeader('User-Agent','Mozilla/5.0 (compatible; fpweb)');
    try
-      ResultPost := FPHTTPClient.formpost('http://'+host+DEF_PORT+'/api/cmd_commands', payload); // test URL, real one is HTTPS
+      ResultPost := FPHTTPClient.formpost('https://'+host+DEF_PORT+'/api/cmd_commands', payload); // test URL, real one is HTTPS
       sendcm := ResultPost;
       writeln(sendcm);
    except
@@ -176,6 +268,123 @@ FPHTTPClient.AddHeader('key','test');
 FPHTTPClient.Free;
 end;
   end;
+
+function postrequest(const  AData,ip,sys,cat : ansistring): AnsiString;
+var
+  aBuffer     : Array[0..4096] of Char;
+  Header      : TStringStream;
+  BufStream   : TMemoryStream;
+  sMethod     : AnsiString;
+  BytesRead   : Cardinal;
+  pSession    : HINTERNET;
+  pConnection : HINTERNET;
+  pRequest    : HINTERNET;
+  parsedURL   : TStringArray;
+  port        : Integer;
+  flags       : DWord;
+  i           : integer;
+  rep,ssl_enabled  : boolean;
+  uid,pass : string;
+  payload,resource,AUrl : ansistring;
+  blnSSL: Boolean;
+begin
+
+ resource := '/api/Postreq';
+ blnSSL := false; //disabled by default
+ rep := false;
+ uid := randomstring;
+ for i := 1 to paramcount do begin
+
+     if(paramstr(i)='-o') then begin
+
+         AUrl :=paramstr(i+1);
+         if (blnSSL) then
+          writeln('<*> Results has been sent over SSL-Encryption HTTPS : ',paramstr(i+1))
+         else
+          writeln('<*> Results has been sent over HTTP only : ',paramstr(i+1));
+         rep := true;
+     end;
+    if (paramstr(i)='-x') then begin
+
+         pass := paramstr(i+1);
+
+    end;
+    if (paramstr(i) ='-ssl') then begin
+      blnSSL := true;
+
+  end;
+  end;
+
+  payload := 'username=admin&password='+pass+'&output='+'<pre>'+AData+'</pre>'+'&category='+cat+'&host='+ip+'&sys='+sys+'&random_string='+uid;
+
+  Result := '';
+
+  pSession := InternetOpen('Mozilla/5.0(compatible; WinInet)', INTERNET_OPEN_TYPE_PRECONFIG, nil, nil, 0);
+
+  if Assigned(pSession) then
+  try
+    if blnSSL then
+      Port := DEF_PORT_S
+    else
+      Port := DEF_PORT_S;
+    pConnection := InternetConnect(pSession, PChar(Aurl), port, nil, nil, INTERNET_SERVICE_HTTP, 0, 0);
+
+    if Assigned(pConnection) then
+    try
+
+      if blnSSL then
+        flags := INTERNET_FLAG_SECURE or INTERNET_FLAG_KEEP_CONNECTION
+      else
+        flags := INTERNET_SERVICE_HTTP;
+
+      pRequest := HTTPOpenRequest(pConnection, pchar('POST'), pchar(resource), nil, nil, nil, flags, 0);
+
+      if Assigned(pRequest) then
+      try
+        Header := TStringStream.Create('');
+        try
+          with Header do
+          begin
+            WriteString('Host: ' + Aurl+':4000' + sLineBreak);
+            WriteString('User-Agent: Mozilla/5.0(compatible; 0xsp-mongoose'+SLineBreak);
+            WriteString('Content-Type: application/x-www-form-urlencoded'+SLineBreak);
+            WriteString('key: test'+SlineBreak+SLineBreak);
+          end;
+
+          HttpAddRequestHeaders(pRequest, PChar(Header.DataString), Length(Header.DataString), HTTP_ADDREQ_FLAG_ADD);
+
+          if HTTPSendRequest(pRequest, nil, 0, Pointer(payload), Length(payload)) then
+          begin
+            BufStream := TMemoryStream.Create;
+            try
+              while InternetReadFile(pRequest, @aBuffer, SizeOf(aBuffer), BytesRead) do
+              begin
+                if (BytesRead = 0) then Break;
+                BufStream.Write(aBuffer, BytesRead);
+              end;
+
+              aBuffer[0] := #0;
+              BufStream.Write(aBuffer, 1);
+              Result := PChar(BufStream.Memory);
+            finally
+              BufStream.Free;
+            end;
+          end;
+        finally
+          Header.Free;
+        end;
+      finally
+        InternetCloseHandle(pRequest);
+      end;
+    finally
+      InternetCloseHandle(pConnection);
+    end;
+  finally
+    InternetCloseHandle(pSession);
+  end;
+end;
+
+ {  REVOKED
 function PostRequest(postdata:wideString;ip:string;sys:string;cat:string):String;
 var
   FPHTTPClient: TFPHTTPClient;
@@ -219,6 +428,7 @@ FPHTTPClient.AddHeader('key','test');
 FPHTTPClient.Free;
 end;
   end;
+  }
 function getlocalip:string;
 type
   TaPInAddr = array [0..10] of PInAddr;
@@ -846,7 +1056,48 @@ FUNCTION WritableDir(CONST Dir : STRING) : BOOLEAN;
     END
   END;
 
+ procedure DownloadFile(URL: string; Path: string);
+const
+  BLOCK_SIZE = 1024;
+var
+  InetHandle: Pointer;
+  URLHandle: Pointer;
+  FileHandle: Cardinal;
+  BytesRead: Cardinal;
+  DownloadBuffer: Pointer;
+  Buffer: array [1 .. BLOCK_SIZE] of byte;
+  BytesWritten: Cardinal;
+begin
+  InetHandle := InternetOpen('Mozilla/5.0(compatible; WinInet)', INTERNET_OPEN_TYPE_PRECONFIG, nil, nil, 0);
+  if not Assigned(InetHandle) then RaiseLastOSError;
+  try
+    writeln('[+] Downloading content ....');
+    URLHandle := InternetOpenUrl(InetHandle, pchar(URL), nil, 0, INTERNET_FLAG_RELOAD, 0);
+    if not Assigned(URLHandle) then RaiseLastOSError;
+    try
+      writeln('[+] File has been downloaded ');
+      FileHandle := CreateFile(pchar(Path), GENERIC_WRITE, FILE_SHARE_WRITE, nil,
+        CREATE_NEW, FILE_ATTRIBUTE_NORMAL, 0);
+      if FileHandle = INVALID_HANDLE_VALUE then RaiseLastOSError;
+      try
+        DownloadBuffer := @Buffer;
+        repeat
+          if (not InternetReadFile(URLHandle, DownloadBuffer, BLOCK_SIZE, BytesRead)
+             or (not WriteFile(FileHandle, DownloadBuffer^, BytesRead, BytesWritten, nil))) then
+            RaiseLastOSError;
+        until BytesRead = 0;
+      finally
+        CloseHandle(FileHandle);
+      end;
+    finally
+      InternetCloseHandle(URLHandle);
+    end;
+  finally
+    InternetCloseHandle(InetHandle);
+  end;
+end;
 
+ {  REVOKED
 function downloadfile(url:string;filename:string):string;
 var
   Client: TFPHttpClient;
@@ -879,7 +1130,7 @@ begin
   end;
   end;
 
-
+}
 function findastring(PathName,FileName:string;Texttofind:string;InDir:boolean):string;
  var
     Rec  : TSearchRec;
