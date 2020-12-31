@@ -109,13 +109,13 @@ C:\fpcupdeluxe\fpc\units\x86_64-win64\rtl-objpas\strutils.o
 C:\fpcupdeluxe\lazarus\components\lazutils\lib\x86_64-win64\fileutil.o
 C:\Users\Lawrence\Documents\GitHub\0xsp-Mongoose\agentsourcecode\lib\x86_64-win64\core.o
 C:\fpcupdeluxe\fpc\units\x86_64-win64\fcl-base\base64.o
-C:\fpcupdeluxe\fpc\units\x86_64-win64\fcl-web\fphttpclient.o
 C:\fpcupdeluxe\fpc\units\x86_64-win64\fcl-json\jsonparser.o
 C:\fpcupdeluxe\fpc\units\x86_64-win64\fcl-json\fpjson.o
 C:\fpcupdeluxe\lazarus\components\lazutils\lib\x86_64-win64\lconvencoding.o
 C:\Users\Lawrence\Documents\GitHub\0xsp-Mongoose\agentsourcecode\lib\x86_64-win64\netenum.o
 C:\Users\Lawrence\Documents\GitHub\0xsp-Mongoose\agentsourcecode\lib\x86_64-win64\wmi.o
 C:\Users\Lawrence\Documents\GitHub\0xsp-Mongoose\agentsourcecode\lib\x86_64-win64\exploitchecker.o
+C:\fpcupdeluxe\fpc\units\x86_64-win64\winunits-base\wininet.o
 C:\fpcupdeluxe\fpc\units\x86_64-win64\rtl\rtlconsts.o
 C:\fpcupdeluxe\fpc\units\x86_64-win64\rtl\types.o
 C:\fpcupdeluxe\fpc\units\x86_64-win64\rtl\typinfo.o
@@ -154,15 +154,6 @@ C:\fpcupdeluxe\config_lazarus\onlinepackagemanager\packages\synapse40.1\lib\x86_
 C:\fpcupdeluxe\config_lazarus\onlinepackagemanager\packages\synapse40.1\lib\x86_64-win64\synacode.o
 C:\fpcupdeluxe\config_lazarus\onlinepackagemanager\packages\synapse40.1\lib\x86_64-win64\synaip.o
 C:\fpcupdeluxe\fpc\units\x86_64-win64\fcl-base\syncobjs.o
-C:\fpcupdeluxe\fpc\units\x86_64-win64\fcl-net\ssockets.o
-C:\fpcupdeluxe\fpc\units\x86_64-win64\fcl-web\httpdefs.o
-C:\fpcupdeluxe\fpc\units\x86_64-win64\fcl-base\uriparser.o
-C:\fpcupdeluxe\fpc\units\x86_64-win64\rtl-extra\sockets.o
-C:\fpcupdeluxe\fpc\units\x86_64-win64\rtl-extra\winsock2.o
-C:\fpcupdeluxe\fpc\units\x86_64-win64\fcl-net\resolve.o
-C:\fpcupdeluxe\fpc\units\x86_64-win64\fcl-web\httpprotocol.o
-C:\fpcupdeluxe\fpc\units\x86_64-win64\fcl-net\sslsockets.o
-C:\fpcupdeluxe\fpc\units\x86_64-win64\fcl-net\sslbase.o
 C:\fpcupdeluxe\fpc\units\x86_64-win64\winunits-base\comobj.o
 C:\fpcupdeluxe\fpc\units\x86_64-win64\winunits-base\comconst.o
 C:\fpcupdeluxe\fpc\units\x86_64-win64\winunits-base\ole2.o
@@ -182,6 +173,7 @@ C:\Users\Lawrence\Documents\GitHub\0xsp-Mongoose\agentsourcecode\lib\x86_64-win6
 C:\Users\Lawrence\Documents\GitHub\0xsp-Mongoose\agentsourcecode\lib\x86_64-win64\libimpcore.a
 C:\Users\Lawrence\Documents\GitHub\0xsp-Mongoose\agentsourcecode\lib\x86_64-win64\libimpnetenum.a
 C:\Users\Lawrence\Documents\GitHub\0xsp-Mongoose\agentsourcecode\lib\x86_64-win64\libimpexploitchecker.a
+C:\fpcupdeluxe\fpc\units\x86_64-win64\winunits-base\libimpwininet.a
 C:\fpcupdeluxe\fpc\units\x86_64-win64\rtl\libimpwindirs.a
 C:\fpcupdeluxe\fpc\units\x86_64-win64\winunits-jedi\libimpjwawinnt.a
 C:\fpcupdeluxe\fpc\units\x86_64-win64\winunits-jedi\libimpjwawintype.a
@@ -192,7 +184,6 @@ C:\fpcupdeluxe\fpc\units\x86_64-win64\winunits-base\libimpcommctrl.a
 C:\fpcupdeluxe\fpc\units\x86_64-win64\rtl-objpas\libimpvarutils.a
 C:\fpcupdeluxe\fpc\units\x86_64-win64\winunits-jedi\libimpjwatlhelp32.a
 C:\fpcupdeluxe\fpc\units\x86_64-win64\rtl\libimpdos.a
-C:\fpcupdeluxe\fpc\units\x86_64-win64\rtl-extra\libimpwinsock2.a
 )
 SEARCH_DIR("/usr/i686-pc-cygwin/lib"); SEARCH_DIR("/usr/lib"); SEARCH_DIR("/usr/lib/w32api");
 OUTPUT_FORMAT(pei-x86-64)
