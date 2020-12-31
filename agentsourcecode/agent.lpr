@@ -1441,9 +1441,6 @@ var
  payload: ansistring;
    host:string;
 begin
-  host := 'localhost';
-  payload :='username=admin&password=0xsp&command_output=testdata';
-  request(host,payload,'/api/cmd_commands',false);
   { add your help code here }
   writeln('Usage: ', ExeName, ' -h');
 
