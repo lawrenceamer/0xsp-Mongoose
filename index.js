@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const sqlite3 = require('sqlite3').verbose();
 const jwt = require('jsonwebtoken');
 const https = require('https');
+const http = require('http');
 const cors = require('cors');
 const dotenv = require("dotenv");
 const fs = require('fs');
@@ -169,10 +170,18 @@ server.use('/upload', upload);
 
 server.get('*', (req, res) => res.sendFile(__dirname + '/public/index.html'));
 
-https.createServer({
-  cert: fs.readFileSync(process.env.CERT_PATH),
-  ca: fs.readFileSync(process.env.CHAIN_PATH),
-  key: fs.readFileSync(process.env.KEY_PATH)
-},server).listen(4000,'0.0.0.0', function () {
-  console.log('0xsp Started on port 4000');
+var args = process.argv;
+
+if(args.slice(2) == 'useSSL'){
+    https.createServer({
+      cert: fs.readFileSync(process.env.CERT_PATH),
+      ca: fs.readFileSync(process.env.CHAIN_PATH),
+      key: fs.readFileSync(process.env.KEY_PATH)
+    },server).listen(4000,'0.0.0.0', function () {
+      console.log('0xsp Started on port 4000');
+  });
+}else{
+http.createServer(server).listen(4000,'0.0.0.0', function () {
+    console.log('0xsp Started on port 4000');
 });
+}
