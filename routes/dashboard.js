@@ -140,8 +140,8 @@ router.get('/scanresult/2/:id', authenticateToken, function (req, res) {
 
 router.get('/scanresult/:scanID/:catID', authenticateToken, function (req, res) {
   let sql = `SELECT *,strftime("%Y-%m-%d %H:%M", created_at) as date,group_concat(DISTINCT outputs.output_body) AS body FROM outputs INNER JOIN categories ON outputs.output_category=categories.cat_id `;
-  sql += `  WHERE outputs.random_val = "${req.params.scanID}" AND outputs.output_category = "${req.params.catID}" GROUP BY date`;
-  db.all(sql, [], (err, data) => {
+  sql += `  WHERE outputs.random_val = ? AND outputs.output_category = ? GROUP BY date`;
+  db.all(sql, [req.params.scanID,req.params.catID], (err, data) => {
     if (err) {
       throw err;
     }
