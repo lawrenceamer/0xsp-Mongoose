@@ -115,7 +115,9 @@ https://0xsp.com
 * Standoff365 - Russia (https://standoff365.com/conferences/357)
 
 ### contribution 
-the project is opensourced and has been built with Lazarus IDE, you are welcomed to suggest any ideas or reporting bugs 
+0xsp community would like to send much thanks for the following people who have contributed to make this project awesome  
+
+* Abboud Dokarli ( Web application API and interface ) @abbddkr
 
 ### tool tutorials 
 make sure to subscribe into the following channel to be notified when new tutorial and tricks published for 0xsp 
