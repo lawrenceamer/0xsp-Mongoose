@@ -1635,6 +1635,7 @@ begin
   writeln('-r',' --spawn a reverse shell with specific account.');
   writeln('-lr',' --Lateral movement technique using WMI (e.g -lr -host 192.168.14.1 -username administrator -password blabla -srvhost nodejsip )');
   writeln('-nds',' --network discovery and share enumeration ');
+  writeln('-dns',' --establish interactive dns C2C shell');
   writeln('-cmd',' --transfer commands via HTTP Shell ');
   writeln('-interactive',' --starting interactive mode (eg : loading plugins ..etc) ');
   writeln('-username',' --identity authentication for specific attack modules.');
