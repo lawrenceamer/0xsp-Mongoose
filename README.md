@@ -64,6 +64,7 @@ default access credentials :
 ### DNS C2C python script 
 
 ```
+touch temp.txt
 python3 dns_server.py -d DOMAIN -a PUBLICIP -i INTERFACEIP
 ```
 
