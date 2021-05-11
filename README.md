@@ -59,7 +59,9 @@ default access credentials :
 
 [<img align="right" src="https://i.imgur.com/EQOsiv8.png">]()
 
-### DNS C2C Python Script 
+
+
+### DNS C2C python script 
 
 ```
 python3 dns_server.py -d DOMAIN -a PUBLICIP -i INTERFACEIP
