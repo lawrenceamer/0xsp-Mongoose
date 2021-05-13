@@ -5,6 +5,8 @@
 [<img src="https://img.shields.io/badge/join-discord-orange">](https://discord.gg/Xsdxxkm)
 [<img src="https://img.shields.io/twitter/follow/zux0x3a?label=follow&style=social">](https://twitter.com/zux0x3a)
 
+Support the project for continuous development (ETH **0xf340c15c5e669a4ababab856e9f2bccd659d6e42**)
+
 # 0xsp Mongoose RED for Windows 
 Current Release **2.2.0** 
 
