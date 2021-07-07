@@ -41,7 +41,7 @@ uses
 
 
 
-
+function ServiceRunning(sMachine, sService: PChar): Boolean;
  function  UserInGroup(Group :DWORD) : Boolean;
  function ServiceGetList(sMachine: string;
                          dwServiceType, dwServiceState: DWord;
@@ -106,6 +106,47 @@ implementation
      FreeSid(pSid);
   end;
  end;
+
+function ServiceGetStatus(sMachine, sService: PChar): DWORD;
+
+var
+  SCManHandle, SvcHandle: SC_Handle;
+  SS: TServiceStatus;
+  dwStat: DWORD;
+  username,password,domain:PChar;
+   htoken:Thandle;
+begin
+//username := 'lawrence';
+//password := '0xsp2021';
+//domain := '0xsp';
+//hToken := 0;
+ //LogonUser(username, domain, password,
+  //  LOGON32_LOGON_NEW_CREDENTIALS, LOGON32_PROVIDER_WINNT50, &hToken);
+//ImpersonateLoggedOnUser(hToken);
+  dwStat := 0;
+  // Open service manager handle.
+  SCManHandle := OpenSCManager(sMachine, nil, SC_MANAGER_CONNECT);
+  if (SCManHandle > 0) then
+  begin
+    SvcHandle := OpenService(SCManHandle, sService, SERVICE_QUERY_STATUS);
+    // if Service installed
+    if (SvcHandle > 0) then
+    begin
+      // SS structure holds the service status (TServiceStatus);
+      if (QueryServiceStatus(SvcHandle, SS)) then
+        dwStat := ss.dwCurrentState;
+      CloseServiceHandle(SvcHandle);
+    end;
+    CloseServiceHandle(SCManHandle);
+  end;
+  Result := dwStat;
+end;
+
+function ServiceRunning(sMachine, sService: PChar): Boolean;
+begin
+  Result := SERVICE_RUNNING = ServiceGetStatus(sMachine, sService);
+end;
+
  function ServiceGetList(sMachine: string;
                          dwServiceType, dwServiceState: DWord;
                          slServicesList: TStrings) : boolean;

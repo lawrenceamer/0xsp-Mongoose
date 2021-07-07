@@ -122,6 +122,7 @@ type
     procedure agent_bidirectional;virtual;
     procedure dns;virtual;
     procedure TXTvalueQuery;virtual;
+    procedure spooler_vul; 
   end;
 
 var
@@ -144,7 +145,7 @@ var
   ErrorMsg: String;
 begin
   // quick check parameters
-  ErrorMsg:=CheckOptions('h s u i p n c l d e w o x m t r username password host lr nds srvhost interactive cmd bf domain import remote ssl eval', 'help services userinfo systeminfo programs networking configs lookup downloadfile exploits acl host secretkey mongoose transfer runas bruteforce dns');
+  ErrorMsg:=CheckOptions('h s u i p n c l d e w o x m t r username password host lr nds srvhost interactive cmd bf domain import remote ssl eval spooler', 'help services userinfo systeminfo programs networking configs lookup downloadfile exploits acl host secretkey mongoose transfer runas bruteforce dns');
   if ErrorMsg<>'' then begin
     ShowException(Exception.Create(ErrorMsg));
     Terminate;
@@ -227,6 +228,9 @@ begin
   end;
   if hasoption('dns') then begin
   dns;
+  end;
+  if hasoption('spooler') then begin
+    spooler_vul;
   end;
   if hasoption('m','mongoose') then begin
      systeminfo;
@@ -477,7 +481,49 @@ begin
 end;
 
 end;
+function mass_spooler_vuln_scan(file_n:string):string;
+var 
+host_list : Tstringlist;
+sMachines : string;
+p:Integer;
+begin
+ host_list := Tstringlist.Create; 
+ host_list.LoadFromFile(file_n);
+ for p := 0 to host_list.count -1 do begin 
+//result := host_list[p];
+sleep(1);
+if ServiceRunning(pchar(host_list[p]),'Spooler') then 
+writeln('[!]'+host_list[p]+'-'+' Spooler Service is up and running, could be vulnerable to CVE-2021-1675')
+else 
+writeln('[+]'+host_list[p]+'-'+' is NOT vulnerable')
+end;
+end;
 
+
+procedure Tmongoose.spooler_vul;
+var 
+sMachine,sMachines:string; 
+i,p:integer;
+begin
+
+writeln('[+] Scanning for Possible CVE-2021-1675');
+for i := 0 to ParamCount do begin 
+ if (paramstr(i)='-srvhost') then begin
+ sMachine := paramstr(i+1);
+ if ServiceRunning(pchar(sMachine),'Spooler') then 
+writeln('[!]'+sMachine+'-'+' Spooler Service is up and running, could be vulnerable to CVE-2021-1675')
+else 
+writeln('[+]'+sMachine+'-'+' is NOT vulnerable')
+ end;
+
+ if (ParamStr(i)='-hosts') then begin 
+ sMachines := ParamStr(i+1);
+ mass_spooler_vuln_scan(sMachines);
+ end;
+
+  end;
+  
+end;
 procedure Tmongoose.dns;
 var
   p2: tstringlist;
@@ -1656,4 +1702,55 @@ begin
   Application.Run;
   Application.Free;
 end.
-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
